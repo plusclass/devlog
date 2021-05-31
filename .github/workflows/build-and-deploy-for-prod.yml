@@ -52,11 +52,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: yarn generate
+    - name: yarn build
       run: |
             yarn
-            yarn build:public
-      working-directory: ./src
+            yarn build
+      working-directory: ./
     - name: Slack Notification on SUCCESS of Build
       if: success()
       uses: tokorom/action-slack-incoming-webhook@master
