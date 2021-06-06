@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import PostCard from "../components/PostCard";
-import CategoryMenu from "../components/CategoryMenu";
 import CategoryJsonLd from "../components/json/CategoryJsonLd";
 import styled from "styled-components";
 
@@ -36,7 +35,6 @@ class CategoryTemplate extends React.Component {
           categorySlug={categorySlug}
           categoryName={categoryName}
         />
-        <CategoryMenu location={location} />
         <Heading>{categoryName}</Heading>
         {posts.map(({ node }) => {
           return <PostCard key={node.fields.slug} node={node} />;

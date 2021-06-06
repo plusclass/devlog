@@ -18,7 +18,7 @@ const PostCardWrapper = styled.div`
     padding: 15px;
     background: #fff;
     border-radius: 5px;
-    color: ${props => props.theme.colors.blackLight};
+    color: ${props => props.theme.colors.bgLight};
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     &:hover {
       background: #e0ebf1;

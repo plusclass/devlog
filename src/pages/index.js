@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import PostCard from "../components/PostCard";
-import CategoryMenu from "../components/CategoryMenu";
 import HomeJsonLd from "../components/json/HomeJsonLd";
 
 class BlogIndex extends React.Component {
@@ -19,10 +18,9 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="" />
         <Helmet>
-          <link rel="canonical" href="https://dev.plusclass" />
+          <link rel="canonical" href="https://dev.plus-class.jp" />
         </Helmet>
         <HomeJsonLd />
-        {/* <CategoryMenu location={location} /> */}
         {posts.map(({ node }) => {
           return <PostCard key={node.fields.slug} node={node} />;
         })}
@@ -47,11 +45,18 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "YYYY.MM.DD")
+            date(formatString: "YYYY/MM/DD")
             title
             author
             description
             category
+            hero {
+              childImageSharp {
+                fluid(maxWidth: 1280) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

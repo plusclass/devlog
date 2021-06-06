@@ -15,18 +15,14 @@ const SyntaxHighlightStyle = css`
     white-space: pre;
     white-space: pre-wrap;
     word-wrap: normal;
-    font-family: Menlo, Monaco, "Courier New", monospace;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 14.5px;
-    color: #22aef1;
+    color: ${props => props.theme.colors.base};
     text-shadow: none;
   }
   pre[class*="language-"],
   :not(pre) > code[class*="language-"] {
-    background: ${props => props.theme.colors.blackLight};
-    border-radius: 5px;
-    @media screen and (max-width: ${props => props.theme.responsive.small}) {
-      border-radius: 0;
-    }
+    background: ${props => props.theme.colors.bgLight};
   }
   pre[class*="language-"] {
     padding: 26px ${boxPaddingSide};
@@ -44,7 +40,6 @@ const SyntaxHighlightStyle = css`
 
   :not(pre) > code[class*="language-"] {
     padding: 0.15em 0.2em 0.05em;
-    border-radius: 0.3em;
     border: 0.13em solid #7a6652;
     box-shadow: 1px 1px 0.3em -0.1em #000 inset;
   }
@@ -64,13 +59,13 @@ const SyntaxHighlightStyle = css`
   }
   .token.attr-name,
   .token.string {
-    color: #ffab3c;
+    color: ${props => props.theme.colors.codeGreen};
   }
   .token.entity,
   .token.url,
   .language-css .token.string,
   .style .token.string {
-    color: #ffab3c;
+    color: ${props => props.theme.colors.codeGreen};
   }
   .token.selector,
   .token.inserted {
@@ -81,7 +76,7 @@ const SyntaxHighlightStyle = css`
   .token.keyword,
   .token.important,
   .token.deleted {
-    color: #ff7574;
+    color: ${props => props.theme.colors.codeRed};
   }
   .token.regex,
   .token.statement {
@@ -97,7 +92,7 @@ const SyntaxHighlightStyle = css`
     font-weight: 600;
   }
   .token.punctuation {
-    color: #bebec5;
+    color: ${props => props.theme.colors.codeBlue};
   }
   .token.entity {
     cursor: help;
@@ -110,7 +105,7 @@ const SyntaxHighlightStyle = css`
     color: #f9f9f9;
   }
   code.language-markup .token.tag {
-    color: #ff7574;
+    color: ${props => props.theme.colors.codeRed};
   }
   code.language-markup .token.attr-name {
     color: #3eda86;
@@ -128,13 +123,13 @@ const SyntaxHighlightStyle = css`
 
   /* Line highlight plugin */
   .gatsby-highlight-code-line {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.05);
     display: table;
     min-width: calc(100% + ${boxPaddingSide} * 2);
     margin-right: -${boxPaddingSide};
     margin-left: -${boxPaddingSide};
     padding-left: 12px;
-    border-left: 5px solid #22aef1;
+    border-left: 5px solid ${props => props.theme.colors.codeBlue};
   }
 
   /*gatsby-remark-code-titles*/
@@ -147,14 +142,10 @@ const SyntaxHighlightStyle = css`
     height: 24px;
     padding: 0 8px;
     line-height: 24px;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
-      Courier New, monospace;
-    font-weight: 600;
-    border-radius: 0 4px;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     display: table;
     z-index: 2;
     @media screen and (max-width: ${props => props.theme.responsive.small}) {
-      border-radius: 0;
       margin-right: -${props => props.theme.sideSpace.contentSmall};
     }
   }
@@ -168,7 +159,6 @@ const SyntaxHighlightStyle = css`
     background: #edf2f7;
     padding: 0.1em 0.3em;
     margin: 0 0.2em;
-    border-radius: 3px;
     line-height: 1.4;
     color: #454e63 !important;
   }

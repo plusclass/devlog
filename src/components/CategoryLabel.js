@@ -7,12 +7,13 @@ const Wrapper = styled.div`
     padding: 0.3em 1em;
     display: inline-block;
     display: inline;
-    padding: 3px 6px;
+    padding: 3px 10px;
     line-height: 1.2;
     font-size: 12px;
-    border-radius: 2px;
-    font-weight: 600;
-    color: #fff;
+    border-radius: 20px;
+    border: 1px solid ${props => props.theme.colors.base};
+    color: ${props => props.theme.colors.base};
+    background: transparent;
     @media screen and (max-width: ${props => props.theme.responsive.large}) {
       font-size: 11px;
       padding: 2.5px 6px;
@@ -31,23 +32,16 @@ const categoryLabel = ({ slug, isLink }) => {
           return cat.slug === slug;
         });
         const categoryName = categoryObject ? categoryObject.name : slug;
-        const categoryColor = categoryObject ? categoryObject.color : "#6d4bf5";
         const content = isLink ? (
           <Link
             to={`/category/${slug}`}
             className="category-text"
-            style={{
-              background: categoryColor
-            }}
           >
             {categoryName}
           </Link>
         ) : (
           <span
             className="category-text"
-            style={{
-              background: categoryColor
-            }}
           >
             {categoryName}
           </span>

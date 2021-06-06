@@ -3,7 +3,7 @@ import { css } from "styled-components";
 const postCustomBlockStyle = css`
   .custom-block {
     margin: 1em 0;
-    background: ${props => props.theme.colors.whitesmoke};
+    background: ${props => props.theme.colors.bgLight};
   }
   .custom-block-heading {
     font-weight: 600;
@@ -26,7 +26,6 @@ const postCustomBlockStyle = css`
   }
   .custom-block.simple {
     padding: 1em 1.2em;
-    border-radius: 5px;
     .custom-block-heading {
       font-size: 1.1em;
     }
@@ -35,29 +34,27 @@ const postCustomBlockStyle = css`
   .custom-block.alert,
   .custom-block.notice {
     padding: 0.7em 1em;
-    border-left: solid 4px ${props => props.theme.colors.highlight};
-    border-radius: 1px 3px 3px 1px;
+    border-left: solid 4px ${props => props.theme.colors.base};
   }
   .custom-block.alert {
-    border-left-color: ${props => props.theme.colors.red};
+    border-left-color: ${props => props.theme.colors.codeRed};
     background: #ffeff0;
     .custom-block-heading {
-      color: ${props => props.theme.colors.red};
+      color: ${props => props.theme.colors.codeRed};
     }
   }
   .custom-block.notice {
-    border-left-color: ${props => props.theme.colors.orange};
-    background: #fff4df;
+    border-left-color: ${props => props.theme.colors.codeGreen};
+    background: #FFF5BC;
     .custom-block-heading {
-      color: ${props => props.theme.colors.orange};
+      color: ${props => props.theme.colors.codeGreen};
     }
   }
   .custom-block.image-small,
   .custom-block.image-medium {
-    background: ${props => props.theme.colors.whitesmoke};
+    background: ${props => props.theme.colors.bgLight};
     padding: 1.5em;
     text-align: center;
-    border-radius: 5px;
     .gatsby-resp-image-wrapper {
       margin: 0;
       border: none;

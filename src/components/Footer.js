@@ -3,18 +3,18 @@ import styled from "styled-components";
 import ContentWrapper from "../components/ContentWrapper";
 
 const FooterContent = styled.footer`
-  padding: 0.1em 0;
+  width: 100vw;
+  padding: 40px 0;
+  background: ${props => props.theme.colors.bgLight};
 `;
 
 const FooterInner = styled.div`
-  margin-top: 3em;
   text-align: left;
   padding: 1.5em;
-  border-top: solid 1px ${props => props.theme.colors.blackLight};
-  color: ${props => props.theme.colors.gray};
+  color: ${props => props.theme.colors.grey};
   font-size: 14px;
   a {
-    color: ${props => props.theme.colors.gray};
+    color: ${props => props.theme.colors.grey};
     text-decoration: underline;
   }
 `;

@@ -1,5 +1,4 @@
 import { css } from "styled-components";
-import svgHeadingIcon from "../svg/others/heading-icon.svg";
 
 const postContentStyle = css`
   margin: 1.5em 0 1em;
@@ -23,8 +22,8 @@ const postContentStyle = css`
   h2 {
     position: relative;
     margin: 55px 0 12px;
-    padding: 5px 0 5px 17px;
-    font-size: 1.55em;
+    padding: 5px 0 5px;
+    font-size: 1.5em;
     &:before {
       position: absolute;
       top: 0;
@@ -33,17 +32,15 @@ const postContentStyle = css`
       display: inline-block;
       width: 5px;
       height: 100%;
-      border-radius: 5px;
-      background: linear-gradient(0deg,#ffa649 0% ,#ffa649 50%,#f7645b 50%,#f7645b 100%);
+      background: ${(props) => props.theme.sideSpace.codeRed};
     }
   }
   h3 {
     margin: 55px 0 12px;
-    font-size: 1.45em;
+    font-size: 1.3em;
   }
   h4 {
     position: relative;
-    padding-left: 18px;
     font-size: 1.1em;
     &:before {
       position: absolute;
@@ -53,9 +50,7 @@ const postContentStyle = css`
       display: inline-block;
       width: 14px;
       height: 19px;
-      background-image: url("${svgHeadingIcon}");
-      background-size: contain;
-      background-repeat: no-repeat;
+      background: ${(props) => props.theme.sideSpace.codeRed};
     }
   }
   ul, ol {
@@ -91,15 +86,13 @@ const postContentStyle = css`
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background: #5c9ee7;
         color: #fff;
-        font-weight: 600;
-        font-size: 14px;
+        font-size: 12px;
         text-align: center;
         line-height: 25px;
         content: counter(number);
         counter-increment: number;
-        background: ${props => props.theme.colors.highlight};
+        background: ${props => props.theme.colors.base};
       }
     }
   }
@@ -116,7 +109,7 @@ const postContentStyle = css`
     display: block;
     margin: 2em 0;
     border: none;
-    border-top: dotted 3px #e1eaf3;
+    border-top: solid 2px ${props => props.theme.colors.bgLight};
   }
   table {
     display: block;
@@ -128,11 +121,10 @@ const postContentStyle = css`
     font-size: .9em;
     line-height: 1.4;
     th {
-      background-color: ${props => props.theme.colors.highlight};
+      background-color: ${props => props.theme.colors.base};
       color: #FFF;
       padding: 10px 12px;
       text-align: center;
-      font-weight: 600;
       &[align="center"] {
         text-align: center;
       }
@@ -141,25 +133,9 @@ const postContentStyle = css`
       }
     }
     td {
-      background-color:  ${props => props.theme.colors.whitesmoke};
-      color: ${props => props.theme.colors.blackLight};
+      background-color:  ${props => props.theme.colors.bgLight};
+      color: ${props => props.theme.colors.grey};
       padding: 10px 12px;
-    }
-    thead tr {
-      th:first-child {
-        border-radius: 5px 0 0 0;
-      }
-      th:last-child {
-        border-radius: 0 5px 0 0;
-      }
-    }
-    tbody tr:last-child {
-      td:first-child {
-        border-radius: 0 0 0 5px;
-      }
-      td:last-child {
-        border-radius: 0 0 5px 0;
-      }
     }
   }
   blockquote {

@@ -1,10 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const globalStyle = createGlobalStyle`
-  /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-  */
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -31,11 +27,11 @@ const globalStyle = createGlobalStyle`
   }
   body {
     background: ${(props) => props.theme.colors.background};
-    color: #333;
+    color: ${(props) => props.theme.colors.base};
     line-height: 1.6;
     font-size: 100%;
     font-weight: 400;
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",  "Hiragino Sans", Meiryo, sans-serif;
+    font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
     -webkit-text-size-adjust: none;
   }
   article, aside, details, figcaption, figure,
@@ -43,12 +39,15 @@ const globalStyle = createGlobalStyle`
     display: block;
   }
   a {
-    color: ${(props) => props.theme.colors.highlight};
+    color: ${(props) => props.theme.colors.link};
     text-decoration: none;
     transition: .2s;
     :focus{
       outline: none;
     }
+  }
+  code, pre {
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
   }
   ol, ul, li {
     list-style: none;

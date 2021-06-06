@@ -1,16 +1,17 @@
 ---
 title: "Devlog"
 date: "2021-02-01T14:12:03.284Z"
-category: "Vue/Nuxt"
+category: "vue"
 description: "テックブログを解説しました"
 author: "goran"
+hero: "./ogp.png"
 ---
 
-devlogのフォーマット
+## devlogのフォーマット
 
 ---
 
-[goran-nasai]](https://goran-nasai.com)
+[goran-nasai](https://goran-nasai.com)
 
 ---
 

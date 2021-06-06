@@ -3,39 +3,39 @@ module.exports = {
     title: `Devlog`,
     author: `dev`,
     description: `プラスクラスdevチームによるテックブログ。日々の実務で活用している技術や役に立った知見を発信していきます。`,
-    siteUrl: `https://dev.plusclass.jp`,
+    siteUrl: `https://dev.plus-class.jp`,
     social: {
       twitter: ``,
     },
     categories: [
       {
         name: "Vue/Nuxt",
-        slug: "design",
-        color: "#0c9ee4",
+        slug: "vue",
+        color: "#000",
       },
       {
         name: "React/Next",
-        slug: "dev",
+        slug: "reat",
         color: "#f7615f",
       },
       {
         name: "Firebase",
-        slug: "self",
+        slug: "firebase",
         color: "#ffa22b",
       },
       {
         name: "JavaScript",
-        slug: "collect",
+        slug: "javascript",
         color: "#ffa22b",
       },
       {
         name: "TypeScript",
-        slug: "collect",
+        slug: "typescript",
         color: "#ffa22b",
       },
       {
         name: "SEO",
-        slug: "collect",
+        slug: "seo",
         color: "#ffa22b",
       },
     ],

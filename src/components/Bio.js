@@ -10,7 +10,7 @@ const BioWrapper = styled.div`
   width: ${props => props.theme.sizes.bioWidth};
   padding: 1.5em;
   font-size: 15.5px;
-  background: ${props => props.theme.colors.blackLight};
+  background: ${props => props.theme.colors.bgLight};
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   @media screen and (max-width: ${props => props.theme.responsive.large}) {
@@ -73,7 +73,7 @@ const BioLink = styled.a`
   color: ${props => props.theme.colors.gray};
   letter-spacing: 0.5px;
   &:hover {
-    color: ${props => props.theme.colors.highlight};
+    color: ${props => props.theme.colors.link};
   }
 `;
 

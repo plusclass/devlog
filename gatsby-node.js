@@ -18,10 +18,11 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 title
-                date(formatString: "YYYY.MM.DD")
+                date(formatString: "YYYY/MM/DD")
                 author
                 description
                 category
+                hero
               }
             }
           }

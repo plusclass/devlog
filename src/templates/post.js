@@ -7,62 +7,19 @@ import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import CategoryLabel from "../components/CategoryLabel";
 import PostJsonLd from "../components/json/PostJsonLd";
-import RelatedPosts from "../components/RelatedPosts";
 import ShareButtons from "../components/ShareButtons";
 
 import postSyntaxHighlightStyle from "../styles/postSyntaxHighlight";
 import postContentStyle from "../styles/postContent";
 import postCustomBlockStyle from "../styles/postCustomBlock";
 
-import svgPattern from "../svg/others/pattern.svg";
-
 const Content = styled.section`
   position: relative;
   background: #fff;
   overflow: hidden;
   font-size: 16px;
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    z-index: 5;
-  }
-  &:before {
-    top: 0;
-    left: 0;
-    border-top: 20px solid ${(props) => props.theme.colors.background};
-    border-right: 20px solid transparent;
-  }
-  &:after {
-    bottom: 0;
-    right: 0;
-    border-bottom: 20px solid ${(props) => props.theme.colors.background};
-    border-left: 20px solid transparent;
-  }
   @media screen and (max-width: ${(props) => props.theme.responsive.small}) {
     margin: 0 -${(props) => props.theme.sideSpace.small};
-    &:before,
-    &:after {
-      content: none;
-    }
-  }
-`;
-
-const HeroImage = styled.p`
-  position: relative;
-  background: ${(props) => props.theme.colors.blackLight};
-  text-align: center;
-  background-image: url("${svgPattern}");
-  background-repeat: repeat;
-  background-size: 400px;
-  min-height: 230px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @media screen and (max-width: ${(props) => props.theme.responsive.small}) {
-    min-height: 190px;
   }
 `;
 
@@ -70,6 +27,22 @@ const ContentMain = styled.div`
   padding: 1.8em ${(props) => props.theme.sideSpace.contentLarge};
   @media screen and (max-width: ${(props) => props.theme.responsive.small}) {
     padding: 30px ${(props) => props.theme.sideSpace.contentSmall};
+  }
+  .author {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 8px;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    p {
+      font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      margin-left: 12px;
+      color: ${(props) => props.theme.colors.grey};
+    }
   }
 `;
 
@@ -85,9 +58,11 @@ const PostTitle = styled.h1`
 
 const PostDate = styled.time`
   display: block;
-  color: ${(props) => props.theme.colors.silver};
+  color: ${(props) => props.theme.colors.grey};
   font-size: 0.9em;
   letter-spacing: 0.05em;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  margin-top: 12px;
 `;
 
 const PostContent = styled.div`
@@ -108,7 +83,7 @@ class BlogPostTemplate extends React.Component {
         <Helmet>
           <link
             rel="canonical"
-            href={`https://dev.plusclass${this.props.location.pathname}`}
+            href={`https://dev.plus-class${this.props.location.pathname}`}
           />
         </Helmet>
         <PostJsonLd
@@ -120,14 +95,17 @@ class BlogPostTemplate extends React.Component {
         />
         <Content>
           <ContentMain>
-            <PostDate>{date}</PostDate>
             <PostTitle>{title}</PostTitle>
             <CategoryLabel slug={category} isLink="true" />
+            <PostDate>{date}</PostDate>
+            <div className="author">
+              <img src={`/images/${author}.jpg`} alt={author} />
+              <p>@{author}</p>
+            </div>
             <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
           </ContentMain>
           <aside>
             <ShareButtons slug={slug} title={title} />
-            {/* <RelatedPosts posts={relatedPosts} /> */}
           </aside>
         </Content>
       </Layout>
@@ -142,7 +120,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -155,6 +132,13 @@ export const pageQuery = graphql`
         date(formatString: "YYYY.MM.DD")
         author
         category
+        hero {
+          childImageSharp {
+            fluid(maxWidth: 1280) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
