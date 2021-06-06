@@ -5,7 +5,7 @@ name: Build and Deploy for production
 
 on:
   push:
-    branches: [ master ]
+    branches: [ test ]
 
 jobs:
   build:
