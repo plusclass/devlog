@@ -1,10 +1,11 @@
 ---
-title: "Fastly + Rails + Herokuでページをキャッシュする方法"
+title: "テスト"
 date: "2019-04-20T22:12:03.284Z"
 category: "seo"
-description: "Heroku + Rails + Fastlyでアセットだけでなくページデータ自体をキャッシュする方法をまとめました。"
-author: "motoi"
-hero: "ogp.png"
+description: "テスト"
+author: "motoi_dev"
+hero: "hero.png"
+ogp: "ogp.png"
 ---
 
 pppp
@@ -27,7 +28,7 @@ ol
 
 [link](https://dev.to/)
 
-![FastlyとHerokuの通信](2019-03-04-10-59-13.png)
+![kv](hero.png)
 
 [[simple | title here]]
 | content here

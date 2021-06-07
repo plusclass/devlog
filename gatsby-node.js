@@ -22,7 +22,6 @@ exports.createPages = ({ graphql, actions }) => {
                 author
                 description
                 category
-                hero
               }
             }
           }

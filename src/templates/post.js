@@ -2,9 +2,11 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
+import Image from "gatsby-image";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
+import Bio from "../components/Bio";
 import CategoryLabel from "../components/CategoryLabel";
 import PostJsonLd from "../components/json/PostJsonLd";
 import ShareButtons from "../components/ShareButtons";
@@ -44,6 +46,9 @@ const ContentMain = styled.div`
       color: ${(props) => props.theme.colors.grey};
     }
   }
+  .hero {
+    margin-bottom: 1.8em;
+  }
 `;
 
 const PostTitle = styled.h1`
@@ -75,8 +80,8 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
-    const { relatedPosts, slug } = this.props.pageContext;
-    const { title, description, date, category, author } = post.frontmatter;
+    const { title, description, date, category, author, hero } = post.frontmatter;
+    const { slug } = this.props.pageContext;
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={title} description={description || post.excerpt} />
@@ -95,6 +100,10 @@ class BlogPostTemplate extends React.Component {
         />
         <Content>
           <ContentMain>
+            <div className="hero"><Image
+              className="hero-image"
+              fluid={hero.childImageSharp.fluid}
+            /></div>
             <PostTitle>{title}</PostTitle>
             <CategoryLabel slug={category} isLink="true" />
             <PostDate>{date}</PostDate>
@@ -103,10 +112,11 @@ class BlogPostTemplate extends React.Component {
               <p>@{author}</p>
             </div>
             <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
-          </ContentMain>
-          <aside>
+            <aside>
             <ShareButtons slug={slug} title={title} />
+            <Bio author={author} />
           </aside>
+          </ContentMain>
         </Content>
       </Layout>
     );
@@ -133,6 +143,13 @@ export const pageQuery = graphql`
         author
         category
         hero {
+          childImageSharp {
+            fluid(maxWidth: 1280) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        ogp {
           childImageSharp {
             fluid(maxWidth: 1280) {
               ...GatsbyImageSharpFluid

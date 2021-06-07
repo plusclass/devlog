@@ -2,8 +2,6 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
-import svgAvatar from "../icon/goran.jpg";
-
 const BioWrapper = styled.div`
   position: sticky;
   top: 2em;
@@ -12,7 +10,7 @@ const BioWrapper = styled.div`
   font-size: 15.5px;
   background: ${props => props.theme.colors.bgLight};
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   @media screen and (max-width: ${props => props.theme.responsive.large}) {
     position: relative;
     margin: 2em 0;
@@ -37,23 +35,25 @@ const BioHeader = styled.div`
 const BioName = styled.div`
   margin-left: 10px;
   a {
-    font-weight: 600;
     letter-spacing: 1px;
-    font-size: 1.3em;
-    color: #fff;
+    font-size: 1em;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    color: ${props => props.theme.colors.grey};
+    background: ${props => props.theme.colors.bgLight};
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid #dadce0;
   }
 `;
 const BioMain = styled.div`
   margin-top: 1em;
 `;
 const BioText = styled.p`
-  color: #fff;
   font-size: 0.92em;
 `;
 const BioLinks = styled.div`
   margin-top: 1.5em;
   display: flex;
-  color: #fff;
   text-align: center;
   max-width: 244px;
   img {
@@ -65,39 +65,38 @@ const BioLinks = styled.div`
 `;
 
 const BioLink = styled.a`
-  width: 33.3%;
+  width: 50%;
   display: block;
-  font-weight: 600;
   font-size: 0.9em;
   line-height: 30px;
   color: ${props => props.theme.colors.gray};
   letter-spacing: 0.5px;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
   &:hover {
     color: ${props => props.theme.colors.link};
   }
 `;
 
-const Bio = () => {
+const Bio = ({ author }) => {
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata;
         return (
           <BioWrapper>
             <BioHeader>
-              <AvatarImage src={svgAvatar} alt={author} />
+              <AvatarImage src="/images/goran.jpg" alt={author} />
               <BioName>
-                <a href={`https://twitter.com/${social.twitter}`}>{author}</a>
+                <a href={`https://twitter.com/${author}`}>@{author}</a>
               </BioName>
             </BioHeader>
             <BioMain>
               <BioText>
-                GORAN_NASAIです。フロントエンドエンジニアやってます。
+                GORAN_NASAIというハンドルネームで、フロントエンドエンジニアやってます。
               </BioText>
               <BioLinks>
                 <BioLink href="https://goran-nasai.com">
-                  <div>SITE</div>
+                  <div>Site</div>
                 </BioLink>
                 <BioLink href="https://twitter.com/goran_nasai">
                   <div>Twitter</div>

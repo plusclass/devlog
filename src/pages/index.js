@@ -50,7 +50,7 @@ export const pageQuery = graphql`
             author
             description
             category
-            hero {
+            ogp {
               childImageSharp {
                 fluid(maxWidth: 1280) {
                   ...GatsbyImageSharpFluid

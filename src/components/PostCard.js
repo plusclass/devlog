@@ -6,13 +6,15 @@ import Image from "gatsby-image";
 
 const PostCardWrapper = styled.div`
   .post-card-link {
-    max-width: 720px;
+    max-width: 750px;
     margin: 2.4em auto;
+    padding: 1.2em;
+    border-radius: 8px;
     display: flex;
     align-items: start;
     color: ${props => props.theme.colors.base};
     &:hover {
-      background: ${props => props.theme.colors.bgLight};
+      box-shadow: 0 0 8px rgba(0,0,0,.1);
     }
     @media screen and (max-width: ${props => props.theme.responsive.large}) {
       margin: 1em 0;
@@ -85,7 +87,7 @@ const PostCard = ({ node }) => {
         <PostCardContent className="content">
           <Image
             className="post-image"
-            fluid={node.frontmatter.hero.childImageSharp.fluid}
+            fluid={node.frontmatter.ogp.childImageSharp.fluid}
           />
         <div className="text">
           <h3>{title}</h3>

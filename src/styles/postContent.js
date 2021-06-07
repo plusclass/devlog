@@ -149,9 +149,7 @@ const postContentStyle = css`
   }
   .gatsby-resp-image-wrapper {
     margin: 1em 0;
-    border: solid 1px #e5e8ea;
-    box-shadow: 0 2px 5px -1px rgba(0,0,0,.25);
-    border-radius: 4px;
+    border: none;
     overflow: hidden;
   }
 `;

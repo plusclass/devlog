@@ -5,6 +5,7 @@ const boxPaddingSide = "1.2em";
 const SyntaxHighlightStyle = css`
   .gatsby-highlight {
     margin: 1.5em 0;
+    border: 1px solid #dadce0;
     @media screen and (max-width: ${props => props.theme.responsive.small}) {
       margin: 1.5em -${props => props.theme.sideSpace.contentSmall};
     }
