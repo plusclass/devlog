@@ -18,7 +18,8 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="" />
         <Helmet>
-          <link rel="canonical" href="https://dev.plus-class.jp" />
+          <link rel="canonical" href="https://dev.plus-class.jp/" />
+          <meta property="og:image" content={`https://dev.plus-class.jp/images/ogp.png`} />
         </Helmet>
         <HomeJsonLd />
         {posts.map(({ node }) => {

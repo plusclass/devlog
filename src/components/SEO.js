@@ -10,7 +10,7 @@ const SEO = ({ description, lang, meta, title }) => {
       render={(data) => {
         const metaDescription =
           description || data.site.siteMetadata.description;
-        const defaultTitle = "Devlog";
+        const defaultTitle = "devlog";
         return (
           <Helmet
             htmlAttributes={{
@@ -33,12 +33,8 @@ const SEO = ({ description, lang, meta, title }) => {
                 content: metaDescription,
               },
               {
-                property: `og:image`,
-                content: `${data.site.siteMetadata.siteUrl}/images/ogp.png`,
-              },
-              {
                 property: `og:type`,
-                content: `website`,
+                content: `article`,
               },
               {
                 name: `twitter:card`,

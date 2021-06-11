@@ -2,35 +2,38 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  margin: 0 0 2.5em;
-  padding: 0 ${(props) => props.theme.sideSpace.contentLarge};
-  color: ${(props) => props.theme.colors.base};
-  @media screen and (max-width: ${(props) => props.theme.responsive.small}) {
-    padding: 0 ${(props) => props.theme.sideSpace.contentSmall};
-  }
+  margin: 0 auto 24px;
+  max-width: 200px;
 `;
 
 const ShareLinks = styled.div`
 `;
 
 const ShareLink = styled.a`
-  display: inline-block;
-  margin: 0 6px;
+  display: flex;
+  justify-content: center;
   line-height: 40px;
-  border-radius: 50%;
-  font-weight: 600;
-  vertical-align: middle;
+  border-radius: 4px;
+  color: ${(props) => props.theme.colors.base};
+  border-bottom: 4px solid white;
   font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  text-align: center;
+  img {
+    transition: ease .3s;
+  }
   &:hover {
-    transform: translateY(-2px);
+    img {
+      transform: translateY(-4px) scale(1.2);
+    }
   }
 `;
 
-const ShareButtons = ({ slug, title }) => {
+const ShareButtons = ({ title, slug }) => {
+  console.log(slug);
   const encodedTitle = encodeURIComponent(
-    `${title} | Devlog`
+    `${title}`
   );
-  const pageUrl = `https://dev.plus-class.jp/${slug}`;
+  const pageUrl = `https://dev.plus-class.jp${slug}`;
   return (
     <Wrapper>
       <ShareLinks>
@@ -38,7 +41,7 @@ const ShareButtons = ({ slug, title }) => {
           href={`https://twitter.com/share?url=${pageUrl}&text=${encodedTitle}`}
           rel="nofollow"
         >
-          <span>Share</span>
+          <span>ShareArticle(</span>
           <img
             src="/images/twitter.svg"
             alt="Twitter"
@@ -48,6 +51,7 @@ const ShareButtons = ({ slug, title }) => {
               marginTop: "11px",
             }}
           />
+          <span>);</span>
         </ShareLink>
       </ShareLinks>
     </Wrapper>

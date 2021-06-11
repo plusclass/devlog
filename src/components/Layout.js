@@ -8,7 +8,6 @@ import ContentWrapper from "../components/ContentWrapper";
 import styled from "styled-components";
 
 const Content = styled.div`
-  margin-top: 2em;
   display: flex;
   min-height: 85vh;
   align-items: flex-start;

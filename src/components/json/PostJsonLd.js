@@ -57,7 +57,7 @@ const PostJsonLD = ({ title, description, date, categorySlug, url }) => {
               position: 1,
               item: {
                 "@id": siteUrl,
-                name: "HOME",
+                name: "Top",
               },
             },
             {

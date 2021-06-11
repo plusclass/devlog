@@ -18,7 +18,7 @@ const CategoryJsonLD = ({ categorySlug, categoryName }) => {
               position: 1,
               item: {
                 "@id": siteUrl,
-                name: "HOME",
+                name: "Top",
               },
             },
             {

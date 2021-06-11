@@ -3,8 +3,7 @@ import { css } from "styled-components";
 const postContentStyle = css`
   margin: 1.5em 0 1em;
   line-height: 1.8;
-
-  a:hover {
+  a {
     text-decoration: underline;
   }
   p {
@@ -16,7 +15,7 @@ const postContentStyle = css`
   h5,
   h6 {
     margin: 40px 0 10px;
-    font-weight: 600;
+    font-weight: normal;
     line-height: 1.5;
   }
   h2 {
@@ -32,7 +31,6 @@ const postContentStyle = css`
       display: inline-block;
       width: 5px;
       height: 100%;
-      background: ${(props) => props.theme.sideSpace.codeRed};
     }
   }
   h3 {
@@ -50,7 +48,6 @@ const postContentStyle = css`
       display: inline-block;
       width: 14px;
       height: 19px;
-      background: ${(props) => props.theme.sideSpace.codeRed};
     }
   }
   ul, ol {
@@ -89,7 +86,8 @@ const postContentStyle = css`
         color: #fff;
         font-size: 12px;
         text-align: center;
-        line-height: 25px;
+        line-height: 26px;
+        font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
         content: counter(number);
         counter-increment: number;
         background: ${props => props.theme.colors.base};
@@ -109,7 +107,7 @@ const postContentStyle = css`
     display: block;
     margin: 2em 0;
     border: none;
-    border-top: solid 2px ${props => props.theme.colors.bgLight};
+    border-top: solid 4px ${props => props.theme.colors.bgLight};
   }
   table {
     display: block;

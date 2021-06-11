@@ -1,42 +1,60 @@
 module.exports = {
   siteMetadata: {
-    title: `Devlog`,
-    author: `dev`,
+    title: `devlog`,
+    author: `dev-team`,
     description: `プラスクラスdevチームによるテックブログ。日々の実務で活用している技術や役に立った知見を発信していきます。`,
     siteUrl: `https://dev.plus-class.jp`,
-    social: {
-      twitter: ``,
+    bio: {
+      goran: {
+        name: "goran_nasai",
+        slug: "goran",
+        color: "#A138D9",
+        text: "フロントエンド。シンプルで速いWebが好きです。",
+        site: "https://goran-nasai.com/"
+      },
+      motoi: {
+        name: "motoi_dev",
+        slug: "motoi",
+        color: "#000",
+        text: "てすと",
+        site: "https://motoi.dev/"
+      }
     },
     categories: [
       {
         name: "Vue/Nuxt",
         slug: "vue",
-        color: "#000",
+        color: "#42b983",
       },
       {
         name: "React/Next",
         slug: "reat",
-        color: "#f7615f",
+        color: "#61dafb",
       },
       {
         name: "Firebase",
         slug: "firebase",
-        color: "#ffa22b",
+        color: "#FFA000",
       },
       {
         name: "JavaScript",
         slug: "javascript",
-        color: "#ffa22b",
+        color: "#00458b",
       },
       {
         name: "TypeScript",
         slug: "typescript",
-        color: "#ffa22b",
+        color: "#3178c6",
       },
       {
         name: "SEO",
         slug: "seo",
-        color: "#ffa22b",
+        color: "#000",
+      },
+      {
+        name: "dev",
+        slug: "dev",
+        color: "#000",
       },
     ],
   },
@@ -128,11 +146,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Devlog`,
+        name: `devlog`,
         short_name: `dev`,
         start_url: `/`,
-        background_color: `rgb(33, 36, 45)`,
-        theme_color: `#0c9ee4`,
+        background_color: `#F5F5F7`,
+        theme_color: `#0000`,
         display: `minimal-ui`,
         icon: `content/assets/avatar.png`,
       },
@@ -140,7 +158,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "",
+        trackingId: "UA-29224954-3",
       },
     },
     `gatsby-plugin-sitemap`,

@@ -3,7 +3,6 @@ import { css } from "styled-components";
 const postCustomBlockStyle = css`
   .custom-block {
     margin: 1em 0;
-    background: ${props => props.theme.colors.bgLight};
   }
   .custom-block-heading {
     font-weight: 600;
@@ -34,20 +33,35 @@ const postCustomBlockStyle = css`
   .custom-block.alert,
   .custom-block.notice {
     padding: 0.7em 1em;
-    border-left: solid 4px ${props => props.theme.colors.base};
+    border-top: solid 2px ${props => props.theme.colors.base};
   }
   .custom-block.alert {
-    border-left-color: ${props => props.theme.colors.codeRed};
-    background: #ffeff0;
+    border-color: ${props => props.theme.colors.alert};
+    color: ${props => props.theme.colors.alert};
     .custom-block-heading {
-      color: ${props => props.theme.colors.codeRed};
+      position: relative;
+      &::before {
+        position: absolute;
+        left: -12px;
+        top: 0;
+        content: '!';
+        font-size: 16px;
+        font-weight: bold;
+      }
     }
   }
   .custom-block.notice {
-    border-left-color: ${props => props.theme.colors.codeGreen};
-    background: #FFF5BC;
+    border-color: ${props => props.theme.colors.notice};
+    color: ${props => props.theme.colors.notice};
     .custom-block-heading {
-      color: ${props => props.theme.colors.codeGreen};
+      position: relative;
+      &::before {
+        position: absolute;
+        left: -16px;
+        top: 3px;
+        content: '★';
+        font-size: 12px;
+      }
     }
   }
   .custom-block.image-small,

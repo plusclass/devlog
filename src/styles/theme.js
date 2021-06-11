@@ -10,21 +10,23 @@ const variables = {
     bgLight: "#F5F5F7",
     goran: "#A138D9",
     motoi: "#000",
+    alert: "#C41212",
+    notice: "#12729D",
   },
   sizes: {
-    bioWidth: "290px",
-    maxWidth: "1100px"
+    bioWidth: "250px",
+    maxWidth: "800px"
   },
   sideSpace: {
-    small: "20px",
+    small: "16px",
     large: "1.5em",
     contentSmall: "20px",
-    contentLarge: "2.5em"
+    contentLarge: "4em"
   },
   responsive: {
     small: "500px",
     medium: "768px",
-    large: "950px"
+    large: "1050px",
   }
 };
 

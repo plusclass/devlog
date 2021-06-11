@@ -6,7 +6,7 @@ import ContentWrapper from "../components/ContentWrapper";
 
 const HeaderTag = styled.header`
   width: 100%;
-  padding: 16px 0;
+  padding: 20px 0;
   background: black;
   span {
     color: white;
@@ -18,6 +18,7 @@ const HeaderInner = styled.div`
   h1,
   h3 {
     width: 100%;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
   }
   .logo {
     display: block;
@@ -47,7 +48,7 @@ const Header = ({ title, location }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const logoLink = (
     <Link to={`/`} className="logo-link">
-      <span>pcg.dev</span>
+      <span>devlog</span>
     </Link>
   );
 

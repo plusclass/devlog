@@ -9,7 +9,6 @@ import SEO from "../components/SEO";
 import Bio from "../components/Bio";
 import CategoryLabel from "../components/CategoryLabel";
 import PostJsonLd from "../components/json/PostJsonLd";
-import ShareButtons from "../components/ShareButtons";
 
 import postSyntaxHighlightStyle from "../styles/postSyntaxHighlight";
 import postContentStyle from "../styles/postContent";
@@ -23,15 +22,32 @@ const Content = styled.section`
   @media screen and (max-width: ${(props) => props.theme.responsive.small}) {
     margin: 0 -${(props) => props.theme.sideSpace.small};
   }
+  .fixed {
+    position: fixed;
+    right: 24px;
+    top: 96px;
+    max-width: ${(props) => props.theme.sizes.bioWidth};
+    @media screen and (min-width: ${(props) => props.theme.sizes.maxWidth}) {
+      right: calc(50vw - ${(props) => props.theme.sizes.maxWidth} / 2 - ${(props) => props.theme.sizes.bioWidth} + 80px );
+    }
+    @media screen and (max-width: ${(props) => props.theme.responsive.large}) {
+      position: static;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
 `;
 
 const ContentMain = styled.div`
-  padding: 1.8em ${(props) => props.theme.sideSpace.contentLarge};
+  padding: 1.8em ${(props) => props.theme.sideSpace.contentLarge} 1.8em 0;
+  @media screen and (max-width: ${(props) => props.theme.responsive.large}) {
+    padding: 1.8em ${(props) => props.theme.sideSpace.contentLarge};
+  }
   @media screen and (max-width: ${(props) => props.theme.responsive.small}) {
     padding: 30px ${(props) => props.theme.sideSpace.contentSmall};
   }
   .author {
-    display: flex;
+    display: inline-flex;
     justify-content: flex-start;
     align-items: center;
     margin-top: 8px;
@@ -48,6 +64,9 @@ const ContentMain = styled.div`
   }
   .hero {
     margin-bottom: 1.8em;
+    border-radius: 8px;
+    border: 4px solid ${(props) => props.theme.colors.bgLight};
+    overflow: hidden;
   }
 `;
 
@@ -57,7 +76,7 @@ const PostTitle = styled.h1`
   @media screen and (max-width: ${(props) => props.theme.responsive.small}) {
     font-size: 25px;
   }
-  font-weight: 600;
+  font-weight: normal;
   line-height: 1.5;
 `;
 
@@ -80,7 +99,8 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
-    const { title, description, date, category, author, hero } = post.frontmatter;
+    const { title, description, date, category, author, hero, ogp } = post.frontmatter;
+    const { bio } = this.props.data.site.siteMetadata;
     const { slug } = this.props.pageContext;
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -88,8 +108,9 @@ class BlogPostTemplate extends React.Component {
         <Helmet>
           <link
             rel="canonical"
-            href={`https://dev.plus-class${this.props.location.pathname}`}
+            href={`https://dev.plus-class.jp${this.props.location.pathname}`}
           />
+          <meta property="og:image" content={`https://dev.plus-class.jp${ogp.childImageSharp.fluid.src}`} />
         </Helmet>
         <PostJsonLd
           title={title}
@@ -105,16 +126,15 @@ class BlogPostTemplate extends React.Component {
               fluid={hero.childImageSharp.fluid}
             /></div>
             <PostTitle>{title}</PostTitle>
-            <CategoryLabel slug={category} isLink="true" />
+            <CategoryLabel slug={category} isLink={true} />
             <PostDate>{date}</PostDate>
-            <div className="author">
+            <a className="author" href={bio[author].site}>
               <img src={`/images/${author}.jpg`} alt={author} />
-              <p>@{author}</p>
-            </div>
+              <p>@{bio[author].name}</p>
+            </a>
             <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
-            <aside>
-            <ShareButtons slug={slug} title={title} />
-            <Bio author={author} />
+            <aside className="fixed">
+            <Bio author={author} path={this.props.location.pathname} title={title} />
           </aside>
           </ContentMain>
         </Content>
@@ -130,6 +150,22 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        bio {
+          goran {
+            name
+            slug
+            color
+            text
+            site
+          }
+          motoi {
+            name
+            slug
+            color
+            text
+            site
+          }
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

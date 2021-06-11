@@ -8,15 +8,16 @@ import SEO from "../components/SEO";
 const Wrapper = styled.div`
   color: #fff;
   text-align: center;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
   @media screen and (max-width: ${props => props.theme.responsive.small}) {
     margin-top: 2em;
   }
 `;
 
 const Title = styled.div`
-  font-size: 55px;
-  font-weight: 600;
-  color: #fff;
+  font-size: 40px;
+  color: black;
+  margin-top: 1.4em;
 `;
 
 const StyledLink = styled(Link)`
@@ -25,8 +26,8 @@ const StyledLink = styled(Link)`
   padding: 0.3em 1em;
   background: #fff;
   font-size: 20px;
-  font-weight: 600;
   border-radius: 4px;
+  text-decoration: underline;
 `;
 
 class NotFoundPage extends React.Component {
@@ -38,9 +39,9 @@ class NotFoundPage extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <Wrapper>
           <SEO title="ページが見つかりません" />
-          <Title>Not Found</Title>
+          <Title>404 Not Found</Title>
           <StyledLink to={`/`} className="cat-item__link">
-            404
+            BackToTop();
           </StyledLink>
         </Wrapper>
       </Layout>

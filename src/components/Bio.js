@@ -1,11 +1,10 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
+import ShareButtons from "../components/ShareButtons";
 
 const BioWrapper = styled.div`
-  position: sticky;
-  top: 2em;
-  width: ${props => props.theme.sizes.bioWidth};
+  width: 100%;
   padding: 1.5em;
   font-size: 15.5px;
   background: ${props => props.theme.colors.bgLight};
@@ -36,13 +35,10 @@ const BioName = styled.div`
   margin-left: 10px;
   a {
     letter-spacing: 1px;
-    font-size: 1em;
+    font-size: 13px;
     font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     color: ${props => props.theme.colors.grey};
-    background: ${props => props.theme.colors.bgLight};
     padding: 4px;
-    border-radius: 4px;
-    border: 1px solid #dadce0;
   }
 `;
 const BioMain = styled.div`
@@ -55,7 +51,6 @@ const BioLinks = styled.div`
   margin-top: 1.5em;
   display: flex;
   text-align: center;
-  max-width: 244px;
   img {
     display: block;
     margin: 0 auto;
@@ -69,37 +64,38 @@ const BioLink = styled.a`
   display: block;
   font-size: 0.9em;
   line-height: 30px;
-  color: ${props => props.theme.colors.gray};
   letter-spacing: 0.5px;
   font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-  &:hover {
-    color: ${props => props.theme.colors.link};
-  }
 `;
 
-const Bio = ({ author }) => {
+const Bio = ( postProp ) => {
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
+        const { bio } = data.site.siteMetadata;
+        const author = postProp.author;
+        const slug = postProp.path;
+        const title = postProp.title;
         return (
           <BioWrapper>
+            <ShareButtons slug={slug} title={title} />
             <BioHeader>
-              <AvatarImage src="/images/goran.jpg" alt={author} />
+              <AvatarImage src="/images/goran.jpg" alt={bio[author].name} />
               <BioName>
-                <a href={`https://twitter.com/${author}`}>@{author}</a>
+                <a href={`https://twitter.com/${bio[author].name}`}>@{bio[author].name}</a>
               </BioName>
             </BioHeader>
             <BioMain>
               <BioText>
-                GORAN_NASAIというハンドルネームで、フロントエンドエンジニアやってます。
+                {bio[author].text}
               </BioText>
               <BioLinks>
-                <BioLink href="https://goran-nasai.com">
-                  <div>Site</div>
+                <BioLink href={bio[author].site}>
+                  <div style={{color: bio[author].color }}>Site</div>
                 </BioLink>
-                <BioLink href="https://twitter.com/goran_nasai">
-                  <div>Twitter</div>
+                <BioLink href={`https://twitter.com/${bio[author].name}`}>
+                  <div style={{color: bio[author].color }}>Twitter</div>
                 </BioLink>
               </BioLinks>
             </BioMain>
@@ -111,23 +107,28 @@ const Bio = ({ author }) => {
 };
 
 const bioQuery = graphql`
-  query BioQuery {
-    avatar: file(absolutePath: { regex: "/avatar.png/" }) {
-      childImageSharp {
-        fixed(width: 70, height: 70) {
-          ...GatsbyImageSharpFixed
+query bioQuery {
+  site {
+    siteMetadata {
+      bio {
+        goran {
+          name
+          slug
+          color
+          text
+          site
         }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-        social {
-          twitter
+        motoi {
+          name
+          slug
+          color
+          text
+          site
         }
       }
     }
   }
+}
 `;
 
 export default Bio;

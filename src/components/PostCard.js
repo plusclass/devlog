@@ -9,12 +9,13 @@ const PostCardWrapper = styled.div`
     max-width: 750px;
     margin: 2.4em auto;
     padding: 1.2em;
-    border-radius: 8px;
     display: flex;
     align-items: start;
     color: ${props => props.theme.colors.base};
+    border-radius: 8px;
+    border: 8px solid ${props => props.theme.colors.bgLight};
     &:hover {
-      box-shadow: 0 0 8px rgba(0,0,0,.1);
+      box-shadow: 0 0 4px rgba(0,0,0,.1);
     }
     @media screen and (max-width: ${props => props.theme.responsive.large}) {
       margin: 1em 0;
@@ -26,21 +27,38 @@ const PostCardWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    @media screen and (max-width: ${props => props.theme.responsive.small}) {
+      flex-direction: column;
+      padding: 0;
+    }
     .post-image {
-      width: 350px;
+      width: 320px;
       box-shadow: none;
+      position: relative;
+      &::before {
+        content: "";
+        width: 80px;
+        height: 4px;
+        background: #000;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        border-radius: 4px;
+      }
+      @media screen and (max-width: ${props => props.theme.responsive.small}) {
+        width: 100%;
+      }
     }
   }
 `;
 const PostCardContent = styled.div`
 .text {
-  width: 324px;
+  width: 350px;
   padding-top: 12px;
-  padding-right: 24px;
 }
   h3 {
-    font-size: 1.5em;
-    font-weight: 600;
+    font-size: 2em;
     line-height: 1.4;
     margin-bottom: 24px;
   }
@@ -70,10 +88,14 @@ const PostCardContent = styled.div`
     width: calc(100% - 70px);
     padding-left: 15px;
     h3 {
-      font-size: 16.5px;
+      font-size: 20px;
+      margin-bottom: 12px;
     }
     time {
       font-size: 12px;
+    }
+    .description {
+      margin: 12px auto;
     }
   }
 `;
@@ -89,17 +111,17 @@ const PostCard = ({ node }) => {
             className="post-image"
             fluid={node.frontmatter.ogp.childImageSharp.fluid}
           />
-        <div className="text">
-          <h3>{title}</h3>
-          <div className="author">
-            <img src={`/images/${node.frontmatter.author}.jpg`} alt={node.frontmatter.author} />
-            <div className="name-date">
-              <p>@{node.frontmatter.author}</p>
-              <time>{node.frontmatter.date}</time>
+          <div className="text">
+            <h3>{title}</h3>
+            <div className="author">
+              <img src={`/images/${node.frontmatter.author}.jpg`} alt={node.frontmatter.author} />
+              <div className="name-date">
+                <p>@{node.frontmatter.author}</p>
+                <time>{node.frontmatter.date}</time>
+              </div>
             </div>
-          </div>
-          <p className="description">{node.frontmatter.description}</p>
-          <CategoryLabel slug={node.frontmatter.category} />
+            <p className="description">{node.frontmatter.description}</p>
+            <CategoryLabel slug={node.frontmatter.category} />
           </div>
         </PostCardContent>
       </Link>

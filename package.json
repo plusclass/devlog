@@ -1,9 +1,9 @@
 {
-  "name": "Devlog",
+  "name": "devlog",
   "private": true,
   "description": "A team blog by pcg.dev",
   "version": "1.0.0",
-  "author": "devteam",
+  "author": "dev-team",
   "bugs": {
     "url": "https://github.com"
   },
