@@ -80,7 +80,7 @@ const Bio = ( postProp ) => {
           <BioWrapper>
             <ShareButtons slug={slug} title={title} />
             <BioHeader>
-              <AvatarImage src={`/images/${bio[author].name}.jpg`} alt={bio[author].name} />
+              <AvatarImage src={`/images/${author}.jpg`} alt={bio[author].name} />
               <BioName>
                 <a style={{color: bio[author].color }} href={`https://twitter.com/${bio[author].name}`}>@{bio[author].name}</a>
               </BioName>
