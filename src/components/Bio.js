@@ -37,7 +37,6 @@ const BioName = styled.div`
     letter-spacing: 1px;
     font-size: 13px;
     font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-    color: ${props => props.theme.colors.grey};
     padding: 4px;
   }
 `;
@@ -81,9 +80,9 @@ const Bio = ( postProp ) => {
           <BioWrapper>
             <ShareButtons slug={slug} title={title} />
             <BioHeader>
-              <AvatarImage src="/images/goran.jpg" alt={bio[author].name} />
+              <AvatarImage src={`/images/${bio[author].name}.jpg`} alt={bio[author].name} />
               <BioName>
-                <a href={`https://twitter.com/${bio[author].name}`}>@{bio[author].name}</a>
+                <a style={{color: bio[author].color }} href={`https://twitter.com/${bio[author].name}`}>@{bio[author].name}</a>
               </BioName>
             </BioHeader>
             <BioMain>

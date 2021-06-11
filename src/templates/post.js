@@ -59,7 +59,7 @@ const ContentMain = styled.div`
     p {
       font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
       margin-left: 12px;
-      color: ${(props) => props.theme.colors.grey};
+      color: ${(props) => props.theme.colors.base};
     }
   }
   .hero {
