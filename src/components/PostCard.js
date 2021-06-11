@@ -56,6 +56,9 @@ const PostCardContent = styled.div`
 .text {
   width: 350px;
   padding-top: 12px;
+  @media screen and (max-width: ${props => props.theme.responsive.small}) {
+    width: 100%;
+  }
 }
   h3 {
     font-size: 2em;
