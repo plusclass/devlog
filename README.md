@@ -1,12 +1,5 @@
-<p>
-  Made with
-  <a href="https://github.com/gatsbyjs/gatsby">
-    Gatsby.js <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="20" style="vertical-align: middle;" />
-  </a>
-</p>
-
 ## Thanks to
-catnone
+[catnone99](https://github.com/catnose99)
 
 ## Markdown
 
@@ -66,18 +59,10 @@ You can use lists like this
 | - Don't stay home.
 ```
 
-### Ads
-
-When to add ads(e.g. Google Adsense) on your site,
-make sure the ads are shown only on production.
-
-```
-if(process.env.NODE_ENV === "production") {
-  // Ads here
-}
-```
-
 ### Licence
 MIT (except for images/icons/blog contents)
 
 You are not allowed to use or distribute images/icons/blogContents included in this project.
+
+### Made with
+[Gatsby.js](https://github.com/gatsbyjs/gatsby)
