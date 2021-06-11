@@ -46,7 +46,7 @@ const SEO = ({ description, lang, meta, title }) => {
               },
               {
                 name: `twitter:title`,
-                content: title,
+                content: title || defaultTitle,
               },
               {
                 name: `twitter:description`,
