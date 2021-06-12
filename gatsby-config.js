@@ -56,6 +56,11 @@ module.exports = {
         slug: "dev",
         color: "#000",
       },
+      {
+        name: "Functions",
+        slug: "functions",
+        color: "#FFA000",
+      },
     ],
   },
   plugins: [
