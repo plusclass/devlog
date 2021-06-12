@@ -16,7 +16,7 @@ module.exports = {
         name: "motoi_dev",
         slug: "motoi",
         color: "#000",
-        text: "工学博士です。技術が好きです。強くて楽しいdevチームを作っています。",
+        text: "ベンチャーでエンジニアをしています。工学博士です。技術が好きです。強くて楽しいdevチームを作っています。Like #soccer #realmadrid #mrchildren #apple #saintlaurent #droledemonsieur #pool🎱",
         site: "https://motoi.dev/"
       }
     },

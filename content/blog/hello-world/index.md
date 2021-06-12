@@ -9,7 +9,7 @@ ogp: "ogp.jpg"
 ---
 
 ## はじめまして
-磯貝です。[株式会社プラスクラス](https://plus-class.co.jp/)および[プラスクラス・スポーツ・インキュベーション株式会社](https://plusclass-sports-incubation.co.jp/)でエンジニアをしています。ハンドルネームは下の名前をローマ字にしただけのmotoiです。どうぞよろしくお願いします！
+こういうとき、`hello-world`以外の言い方を思いつかない磯貝です。[株式会社プラスクラス](https://plus-class.co.jp/)および[プラスクラス・スポーツ・インキュベーション株式会社](https://plusclass-sports-incubation.co.jp/)でエンジニアをしています。ハンドルネームは下の名前をローマ字にしただけのmotoiです。どうぞよろしくお願いします！
 
 (詳しいプロフィールは[個人ブログ](https://motoi.dev/think/hello_world/)にて詳しく書いてますのでぜひ🥺)
 
@@ -24,9 +24,9 @@ ogp: "ogp.jpg"
 
 [代表の平地も以下で言っている](https://twitter.com/halloffame81/status/1403215255941967880?s=20)通り、「一緒に入ろうぜ！」という話をしたわけではなく、それぞれがそれぞれのキャリアを選択した結果、devチーム発足へ繋がったわけです。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">プラスクラスグループでエンジニアの採用を一切考えてなかった時にまとめて2人も入社したい！と言われてビックリしたことを今でも覚えてる（笑）しかも言い合せてないで各々からだったから尚更（笑）彼ら2人との出会いが僕にとっては財産そのもの。愛しかないぜ😚 <a href="https://twitter.com/hashtag/%E6%9C%AC%E6%B0%97%E3%81%AA%E3%82%89PSI?src=hash&amp;ref_src=twsrc%5Etfw">#本気ならPSI</a> <a href="https://t.co/pahv2AvytD">https://t.co/pahv2AvytD</a></p>&mdash; 平地 大樹（ひらちたいじゅ）日本のスポーツ全会場を満員にするPSI代表 (@halloffame81) <a href="https://twitter.com/halloffame81/status/1403215255941967880?ref_src=twsrc%5Etfw">June 11, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 右も左もニシもヒガシも分からないまま爆誕したdevチームのここまでの歩みについてはまたじっくりと✏️
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">プラスクラスグループでエンジニアの採用を一切考えてなかった時にまとめて2人も入社したい！と言われてビックリしたことを今でも覚えてる（笑）しかも言い合せてないで各々からだったから尚更（笑）彼ら2人との出会いが僕にとっては財産そのもの。愛しかないぜ😚 <a href="https://twitter.com/hashtag/%E6%9C%AC%E6%B0%97%E3%81%AA%E3%82%89PSI?src=hash&amp;ref_src=twsrc%5Etfw">#本気ならPSI</a> <a href="https://t.co/pahv2AvytD">https://t.co/pahv2AvytD</a></p>&mdash; 平地 大樹（ひらちたいじゅ）日本のスポーツ全会場を満員にするPSI代表 (@halloffame81) <a href="https://twitter.com/halloffame81/status/1403215255941967880?ref_src=twsrc%5Etfw">June 11, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## 普段やっていること
 そんな僕らが普段やっていることは少し異なります。彼がマークアップ寄りのフロントエンドを中心に開発をしているのに対し、僕はフロントエンドでも特にJS寄り、時にはバックエンドを担当します。ほとんどの開発が自社開発とそのディレクションです。
