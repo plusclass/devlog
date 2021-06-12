@@ -41,7 +41,7 @@ const ShareButtons = ({ title, slug }) => {
           href={`https://twitter.com/share?url=${pageUrl}&text=${encodedTitle}`}
           rel="nofollow"
         >
-          <span>ShareArticle(</span>
+          <span>shareArticle(</span>
           <img
             src="/images/twitter.svg"
             alt="Twitter"

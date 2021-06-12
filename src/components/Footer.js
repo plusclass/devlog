@@ -41,7 +41,7 @@ const Footer = () => {
       <ContentWrapper>
         <FooterInner>
           <div>© {new Date().getFullYear()}, Plusclass Inc. All rights reserved.</div>
-          <p>CorpLinks[] : </p>
+          <p>corpLinks[] : </p>
           <div className="corp">
             <a href="https://plus-class.co.jp/">
               <img className="pc" src="/images/logo_pc.svg" alt="プラスクラスのロゴ" />
