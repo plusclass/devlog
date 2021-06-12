@@ -3,7 +3,7 @@ module.exports = {
     title: `devlog`,
     author: `dev-team`,
     description: `プラスクラスdevチームによるテックブログ。日々の実務で活用している技術や役に立った知見を発信していきます。`,
-    siteUrl: `https://dev.plus-class.jp`,
+    siteUrl: `https://dev.plus-class.jp/`,
     bio: {
       goran: {
         name: "goran_nasai",
@@ -16,7 +16,7 @@ module.exports = {
         name: "motoi_dev",
         slug: "motoi",
         color: "#000",
-        text: "てすと",
+        text: "工学博士です。技術が好きです。強くて楽しいdevチームを作っています。",
         site: "https://motoi.dev/"
       }
     },
