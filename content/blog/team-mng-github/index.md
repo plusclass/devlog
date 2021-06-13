@@ -2,7 +2,7 @@
 title: "devチームをつくる(1) - GitHub(1)"
 date: "2021-06-21T12:00:00.000Z"
 category: "github"
-description: "GitHubでコード管理を行っています。具体的な活用方法をお見せします。"
+description: "GitHubでコード・イシュー管理を行っています。運用方法をすべて公開します。"
 author: "motoi"
 hero: "hero.jpg"
 ogp: "ogp.jpg"
