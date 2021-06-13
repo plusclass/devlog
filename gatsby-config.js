@@ -56,6 +56,11 @@ module.exports = {
         slug: "dev",
         color: "#000",
       },
+      {
+        name: "GitHub",
+        slug: "github",
+        color: "#24292E",
+      },
     ],
   },
   plugins: [
