@@ -1,6 +1,6 @@
 ---
 title: "ごあいさつ"
-date: "2021-06-12T12:00:00.000Z"
+date: "2021-06-16T12:00:00.000Z"
 category: "dev"
 description: "初めての投稿です。ご挨拶をば。"
 author: "motoi"
