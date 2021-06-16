@@ -14,7 +14,7 @@ ogp: "ogp.jpg"
 (詳しいプロフィールは[個人ブログ](https://motoi.dev/think/hello_world/)にて詳しく書いてますのでぜひ🥺)
 
 ## devチーム爆誕
-初めなので、軽くdevチーム誕生秘話(？)をば。
+初めなので、軽くdevチーム誕生秘話(？)を。
 
 [前回の記事](http://localhost:8000/devlog-has-launched/)でGORANが申し上げたとおり、現在devチームに所属する正規のエンジニアは僕とGORANの2人です。昨年4月に発足し1年数ヶ月が経ちました。
 
