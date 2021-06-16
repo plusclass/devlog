@@ -16,8 +16,8 @@ module.exports = {
         name: "motoi_dev",
         slug: "motoi",
         color: "#000",
-        text: "工学博士です。技術が好きです。強くて楽しいdevチームを作っています。",
-        site: "https://motoi.dev/"
+        text: "ベンチャーでエンジニアをしています。工学博士です。技術が好きです。強くて楽しいdevチームを作っています。Like #soccer #realmadrid #mrchildren #apple #saintlaurent #droledemonsieur #pool🎱",
+        site: "https://linktr.ee/motoi.dev/"
       }
     },
     categories: [
@@ -55,6 +55,11 @@ module.exports = {
         name: "dev",
         slug: "dev",
         color: "#000",
+      },
+      {
+        name: "Functions",
+        slug: "functions",
+        color: "#FFA000",
       },
     ],
   },
