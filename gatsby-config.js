@@ -57,9 +57,15 @@ module.exports = {
         color: "#000",
       },
       {
+        name: "GitHub",
+        slug: "github",
+        color: "#24292E",
+      },
+      {
         name: "Functions",
         slug: "functions",
         color: "#FFA000",
+      }
       },
     ],
   },
