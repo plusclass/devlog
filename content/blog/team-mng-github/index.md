@@ -42,7 +42,7 @@ ogp: "ogp.jpg"
 3. 作業をするときは、必ずIssueを立てて、`(IssueのType名)/#(Issue番号)_(内容が端的に分かる英単語)`ブランチを`master`ブランチから切ってそこで作業をする。ex.)feature/#12_select_player (IssueのType名については後述)
 4. `development`ブランチは好きにマージしてよい。
 5. 上記ブランチでの開発が終われば、`master`ブランチあるいは`staging`ブランチにPRを送信する。
-6. ReviewerはFirebaseが発行するプレビューチャンネルを活用し、コードのみならずUIUXのチェックも行う。
+6. ReviewerはFirebaseが発行するプレビューチャンネルを活用し、コードのみならずUIUXのチェックも行う。(めちゃくちゃ便利！設定方法含めて記事にします)
 7. 問題なければマージする。
 8. マージ先が`staging`ブランチだった場合は、Staging環境でReviewerがチェックをし問題なければ`master`ブランチにマージする。
 
