@@ -20,7 +20,7 @@ ogp: "ogp.jpg"
 やるべきタスクに対してIssueを作成します。内容は、まだチームメンバーが数人ということもあり、テンプレート化していません。取り組んでほしい内容をIssueにする際には、箇条書きで要件と、場合によっては画像で説明を与えます。
 
 ### ラベルの付与
-以下がうちのdevでデフォルトとして用意しているラベルです。GitHubでは、Organizationの設定の'Repository default'メニューで、デフォルトのラベルを設定できます。
+以下がdevでデフォルトとして用意しているラベルです。GitHubでは、Organizationの設定の'Repository default'メニューで、デフォルトのラベルを設定できます。
 
 ![image](default_labels.png)
 
@@ -33,8 +33,40 @@ ogp: "ogp.jpg"
 - 絵文字を入れて視覚的にもわかりやすく。色もこだわって。
 - Remarkラベルは適宜必要があれば。
 
-### Projectの設定
-Projectをどうするか、は、最も議論を重ねてきたところかもしれません。
+## Projectの活用
+### Projectとは
+営業やデザイナーとの課題管理については、基本的にTrelloを使用していますが、devはやはりIssueをベースに課題管理をしたく、GitHubのProjectを用いることにしました。活用方法については最も議論を重ねてきたところかもしれません。
+
+念の為、Projectについて説明をすると、各Issueをカードとして、「進行中」や「完了」等のリスト間を移動させることで、視覚的に現在をIssueを整理することが可能な機能です。以下の画像は、Firebaseの、あるリポジトリのProjectを拝借したものです。どのIssueが進行中で、どのIssueが顕在化されているのかひと目で分かります。
+
+![image](firebase_github_project.png)
+
+### チームでの活用方法
+
+このProjectはリポジトリ毎に作成することもできますし、Organizationに作成することもできます。初めは各リポジトリにおいて、Projectを使っていたのですが、それだと、今devチームが全体でどれだけのIssueを抱えているのか、をクイックに把握することができませんでした。
+
+そこで、**各リポジトリでProjectを作成するのは禁止し、OrganizationのProjectのみを使うことで、すべてのリポジトリのIssueをチームで確認できるようにしました**。そしてこのProjectを**TPM(Team Progress Management)**と名付け、隔日で開催しているチームミーティングで確認をしています。
+
+devでは以下のリストを用意しています。
+- Backlog 👀
+  - 割と長めの期間を見込んで取り組むIssue
+- To do 🔥
+  - 直近で取り組むべきIssue
+  - Issueが作成されれば自動でこのリストに入る
+- In progress 🧑‍💻
+  - 進行中のIssue
+  - ブランチを切る前にこのリストにIssueを移動させ、取組中であることを明示する
+- Under review 👨‍🏫
+  - PRを投げレビュー中のIssue
+- Implemented 🙆‍♂️
+  - CloseしたIssue
+  - IssueをCloseすると自動的に入る
+- Public ✨
+  - 実際に本番環境へ反映されたIssue
+- Staging ✔️
+  - まだ本番公開前のプロジェクトでステージング環境が最終地点の場合は、Public✨ではなくこちらに入る
+
+
 
 
 ## Next Dev's HINT...
