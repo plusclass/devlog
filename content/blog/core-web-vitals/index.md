@@ -21,8 +21,7 @@ ogp: "ogp.jpg"
 [ケーススタディも充実してきました](https://web.dev/vitals-business-impact/)。「ランキング要因になり得る」という説明しかできなかった1年前から「SEOに影響を与える」と明言できるようになり、さらには**「売上が上がる」**といった説得材料も獲得してきています。
 
 ### ページではなく旅である
-その背景には[Journeys, not pages](https://blog.chromium.org/2020/05/the-science-behind-web-vitals.html)という概念があり、個人的にはそれが昨今のWebを象徴していると思っています。モダンなJavaScriptによるリッチな体験はもちろん素晴らしいですが、古き良きHTMLによる**高速なWeb体験も強く望まれる**潮流があるのではないでしょうか。その最たる例がJAMStackのトレンドぶりです。このサイトもJAMStackですが、smoothでcleanな素晴らしいアイディアです。まだまだ流行るでしょうね。JAMStackの基本原理`pre-rendering`と`decoupling`についても今度掘り下げたいです。
-
+その背景には[Journeys, not pages](https://blog.chromium.org/2020/05/the-science-behind-web-vitals.html)という概念があり、個人的にはそれが昨今のWebを象徴していると思っています。モダンなJavaScriptによるリッチな体験はもちろん素晴らしいですが、古き良きHTMLによる**高速なWeb体験も強く望まれる**潮流があるのではないでしょうか。その最たる例が[Jamstack](https://jamstack.org/)のトレンドぶりです。このサイトもJamstackですが、smoothでcleanな素晴らしいアイディアです。まだまだ流行るでしょうね。Jamstackの基本原理`pre-rendering`と`decoupling`についても今度掘り下げたいです。
 
 ## CLSの定義変更
 Core Web Vitalsには
