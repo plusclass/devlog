@@ -37,14 +37,14 @@ const categoryLabel = ({ slug, isLink }) => {
           <Link
             to={`/category/${slug}`}
             className="category-text"
-            style={{color: categoryColor }}
+            style={{color: categoryColor, borderColor: categoryColor }}
           >
             {categoryName}
           </Link>
         ) : (
           <span
             className="category-text"
-            style={{color: categoryColor }}
+            style={{color: categoryColor, borderColor: categoryColor }}
           >
             {categoryName}
           </span>

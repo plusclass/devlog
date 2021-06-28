@@ -65,6 +65,11 @@ module.exports = {
         name: "Functions",
         slug: "functions",
         color: "#FFA000",
+      },
+      {
+        name: "Performance",
+        slug: "performance",
+        color: "#4184F3",
       }
     ],
   },

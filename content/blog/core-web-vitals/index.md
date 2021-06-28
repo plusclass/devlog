@@ -1,7 +1,7 @@
 ---
 title: "Core Web Vitalsについて"
 date: "2021-06-28T12:00:00.000Z"
-category: "dev"
+category: "performance"
 description: "新たなパフォーマンス指標CWVを知る。"
 author: "goran"
 hero: "hero.jpg"
