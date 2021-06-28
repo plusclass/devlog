@@ -20,9 +20,9 @@ const postContentStyle = css`
   }
   h2 {
     position: relative;
-    margin: 52px 0 12px;
+    margin: 48px 0 12px;
     padding: 5px 0 5px;
-    font-size: 1.5em;
+    font-size: 1.6em;
     &:before {
       position: absolute;
       top: 0;
@@ -34,8 +34,9 @@ const postContentStyle = css`
     }
   }
   h3 {
-    margin: 44px 0 12px;
+    margin: 24px 0 12px;
     font-size: 1.3em;
+    font-weight: bold;
   }
   h4 {
     position: relative;
