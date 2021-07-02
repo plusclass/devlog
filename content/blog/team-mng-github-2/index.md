@@ -1,6 +1,6 @@
 ---
 title: "devチームをつくる(1) - GitHub(2)"
-date: "2021-07-01T12:00:00.000Z"
+date: "2021-07-02T12:00:00.000Z"
 category: "github"
 description: "GitHubでコード・イシュー管理を行っています。運用方法をすべて公開します。"
 author: "motoi"
