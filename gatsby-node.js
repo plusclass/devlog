@@ -22,6 +22,8 @@ exports.createPages = ({ graphql, actions }) => {
                 author
                 description
                 category
+                category2
+                category3
               }
             }
           }

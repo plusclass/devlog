@@ -125,6 +125,8 @@ const PostCard = ({ node }) => {
             </div>
             <p className="description">{node.frontmatter.description}</p>
             <CategoryLabel slug={node.frontmatter.category} />
+            <CategoryLabel slug={node.frontmatter.category2} />
+            <CategoryLabel slug={node.frontmatter.category3} />
           </div>
         </PostCardContent>
       </Link>

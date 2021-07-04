@@ -2,6 +2,8 @@
 title: "devlog has lauched."
 date: "2021-06-11T12:00:00.000Z"
 category: "dev"
+category2: ""
+category3: ""
 description: "テックブログを開設しました。"
 author: "goran"
 hero: "hero.jpg"

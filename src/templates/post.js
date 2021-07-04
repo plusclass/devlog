@@ -99,7 +99,7 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
-    const { title, description, date, category, author, hero, ogp } = post.frontmatter;
+    const { title, description, date, category, category2, category3, author, hero, ogp } = post.frontmatter;
     const { bio } = this.props.data.site.siteMetadata;
     const { slug } = this.props.pageContext;
     return (
@@ -127,6 +127,8 @@ class BlogPostTemplate extends React.Component {
             /></div>
             <PostTitle>{title}</PostTitle>
             <CategoryLabel slug={category} isLink={true} />
+            <CategoryLabel slug={category2} isLink={true} />
+            <CategoryLabel slug={category3} isLink={true} />
             <PostDate>{date}</PostDate>
             <a className="author" href={bio[author].site}>
               <img src={`/images/${author}.jpg`} alt={author} />
@@ -178,6 +180,8 @@ export const pageQuery = graphql`
         date(formatString: "YYYY.MM.DD")
         author
         category
+        category2
+        category3
         hero {
           childImageSharp {
             fluid(maxWidth: 1280) {
