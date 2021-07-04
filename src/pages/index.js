@@ -51,6 +51,8 @@ export const pageQuery = graphql`
             author
             description
             category
+            category2
+            category3
             ogp {
               childImageSharp {
                 fluid(maxWidth: 1280) {

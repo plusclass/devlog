@@ -3,11 +3,12 @@ import { Link, StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  display: inline-block;
+  margin-right: 8px;
   .category-text {
     padding: 0.3em 1em;
     display: inline-block;
-    display: inline;
-    padding: 3px 10px;
+    padding: 4px 12px;
     line-height: 1.2;
     font-size: 12px;
     border-radius: 20px;
@@ -16,7 +17,6 @@ const Wrapper = styled.div`
     background: transparent;
     @media screen and (max-width: ${props => props.theme.responsive.large}) {
       font-size: 11px;
-      padding: 2.5px 6px;
     }
   }
 `;
