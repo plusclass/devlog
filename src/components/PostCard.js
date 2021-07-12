@@ -14,8 +14,18 @@ const PostCardWrapper = styled.div`
     color: ${props => props.theme.colors.base};
     border-radius: 8px;
     border: 8px solid ${props => props.theme.colors.bgLight};
+    .post-image {
+      img {
+        transition: ease .3s !important;
+      }
+    }
     &:hover {
       box-shadow: 0 0 4px rgba(0,0,0,.1);
+      .post-image {
+        img {
+          transform: scale(1.05);
+        }
+      }
     }
     @media screen and (max-width: ${props => props.theme.responsive.large}) {
       margin: 1em 0;
@@ -35,19 +45,32 @@ const PostCardWrapper = styled.div`
       width: 320px;
       box-shadow: none;
       position: relative;
+      border-radius: 8px;
       &::before {
         content: "";
         width: 80px;
         height: 4px;
         background: #000;
         position: absolute;
-        bottom: 0;
-        left: 0;
+        bottom: 8px;
+        left: 8px;
         z-index: 2;
         border-radius: 4px;
       }
       @media screen and (max-width: ${props => props.theme.responsive.small}) {
         width: 100%;
+      }
+    }
+  }
+  :first-child {
+    .post-card-link {
+      color: ${props => props.theme.colors.bgLight};;
+      border: 8px solid #000;
+      background: ${props => props.theme.colors.base};
+    }
+    .post-image {
+      &::before {
+        background: #000;
       }
     }
   }
@@ -108,7 +131,7 @@ const PostCard = ({ node }) => {
 
   return (
     <PostCardWrapper>
-      <Link to={node.fields.slug} className="post-card-link">
+      <Link to={node.fields.slug} className="post-card-link" onTouchStart="">
         <PostCardContent className="content">
           <Image
             className="post-image"
