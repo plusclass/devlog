@@ -39,7 +39,12 @@ module.exports = {
       {
         name: "JavaScript",
         slug: "javascript",
-        color: "#00458b",
+        color: "#dab92c",
+      },
+      {
+        name: "CSS",
+        slug: "css",
+        color: "#0b74b8",
       },
       {
         name: "TypeScript",

@@ -53,10 +53,9 @@ const SyntaxHighlightStyle = css`
   .token.cdata {
     color: rgba(255, 255, 255, 0.6);
   }
-  .token.operator,
   .token.boolean,
   .token.number {
-    color: #a77afe;
+    color: #007aa2;
   }
   .token.attr-name,
   .token.string {
@@ -70,8 +69,12 @@ const SyntaxHighlightStyle = css`
   }
   .token.selector,
   .token.inserted {
-    color: #3eda86;
+    color: #9f1c59;
   }
+  .token.property {
+    color: #385d34;
+  }
+  .token.operator,
   .token.atrule,
   .token.attr-value,
   .token.keyword,
@@ -137,7 +140,7 @@ const SyntaxHighlightStyle = css`
   .gatsby-code-title {
     position: relative;
     margin: 1.5em 0 -24px auto;
-    background: #20242e;
+    background: #202124;
     color: #fff;
     font-size: 12px;
     height: 24px;
