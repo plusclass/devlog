@@ -38,7 +38,7 @@ GCPのCloud BuildやCircleCI等、CI/CDサービスはいくつかあります�
 - buildの設定
 - slackへの通知
 
-ここらへんはカスタマイズしたいところですね。加えて、上記の実現にFirebaseExtended/action-hosting-deploy@v0という拡張機能を使うのですが、そのオプションの説明も以下で行います。
+ここらへんはカスタマイズしたいところですね。加えて、上記の実現に`FirebaseExtended/action-hosting-deploy@v0`という拡張機能を使うのですが、そのオプションの説明も以下で行います。
 
 ### コマンドの実行
 まずは以下のコマンドを実行します。
@@ -50,6 +50,71 @@ firebase init hosting
 // Firebase Hosting設定済みの場合
 firebase init hosting:github
 ```
+
+前者に関しては[公式](https://firebase.google.com/docs/hosting/quickstart?hl=ja)や[この辺](https://qiita.com/rubytomato@github/items/b83caa01fc9c4993f526)の記事を参考にしてください。
+
+そうすると、ブラウザでGitHubとの連携を許可するかどうか聞かれるので許可します。
+
+[[notice | Organizationのリポジトリとの連携]]
+| Organizationのリポジトリとの連携をしたい場合、Organizationで許可をする必要があります。コマンド後に開かれる画面でできますが、以下の手順で後から設定も可能です。
+| 
+| - GitHubにログインし、自分のアイコンを押して出てくるプルダウンメニューから'Settings'をクリック
+| - 'Applications'をクリック
+| - 'Authorized OAuth Apps'タブをクリック
+| - 'Firebase CLI'をクリック
+| - 下部の'Organization access'で許可するOrganizationをGrant
+
+さて、許可したら、ターミナルに戻りいくつか質問に答えていきます。以下、参考にしてください。
+
+| 質問 | 質問訳 | 回答例 |
+| -------- | -------- | -------- |
+| For which GitHub repository would you like to set up a GitHub workflow?     | GitHub Actionsを設定したいリポジトリはどれですか？     | (組織名)/(リポジトリ名), (アカウント名)/(リポジトリ名)     |
+| Set up the workflow to run a build script before every deploy? | buildコマンドを毎回実行しますか？ | VueやReact等のJSフレームワークを使っていてビルドが必要な場合はYes |
+| What script should be run before every deploy? | (上記Yesの場合)どのコマンドを実行しますか？ | yarn generate |
+| Set up automatic deployment to your site’s live channel when a PR is merged? | プルリクエストがマージされれば、自動的に本サイトのURLにデプロイしますか？ | Yes or No |
+| What is the name of the GitHub branch associated with your site’s live channel? | 本サイトのブランチ名はなんですか？ | master |
+
+2問目移行は自動で作成されるyamlのコマンドなので、後からyamlファイルを編集することで容易に変更が可能です。
+
+上記の質問に答えれば、`firebase-hosting-pull-request.yml`と`firebase-hosting-merge.yml`の2つのファイルが`.github/workflows`の中にできているはず。例えば前者の中身を見てみると、
+
+```yaml:firebase-hosting-pull-request.yml
+name: Deploy to Firebase Hosting on PR
+'on': pull_request
+jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: 'yarn generate'
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_~ }}'
+          projectId: (プロジェクトID)
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
+```
+
+となっています。
+
+`secrets.GITHUB_TOKEN`はGitHubで予約されている環境変数、`secrets.FIREBASE_SERVICE_ACCOUNT_~` はリポジトリに自動作成された環境変数です。GitHubのコンソールで、Settings/Secretsに環境変数が保存されるのですが、確かにに自動で作成されていました。
+
+![image](github_secrets.png)
+
+これだけで、yamlで指定したブランチへのpushをフックにGitHub Actionsのビルドが走り、ビルドが終了すると、Firebaseが自動でプレビューチャンネルを発行してくれます。PR上では以下のようになります。
+
+![image](github_firebase.png)
+
+Awesome!!!
+
+### yamlの拡張
+ここまでコードレスで実現しましたが、先述したとおり、yamlファイルを拡張することでいろんな事ができます。
+
+#### プレビューチャンネルの有効期限の指定
+
+
+
 
 
 ## Next Dev's HINT...
