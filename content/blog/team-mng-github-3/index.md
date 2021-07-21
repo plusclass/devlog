@@ -11,19 +11,24 @@ ogp: "ogp.jpg"
 ---
 
 ## 前回のおさらい
-こんにちは！[前回](https://dev.plus-class.jp/team-mng-github-2/)の続きです。Issue管理やProjectの活用方法について話した前回。今回は、予告通り、GitHubとFirebaseのインテグレーションが非常に便利なので紹介します。
+こんにちは！いきなり夏。こんな暑い中でも連休はサッカーに明け暮れるであろうmotoiです。さて、[前回](https://dev.plus-class.jp/team-mng-github-2/)の続きです。Issue管理やProjectの活用方法について話した前回。今回は、予告通り、GitHubとFirebaseのインテグレーションがハンパないのでご紹介します。コードも入り、少々長いですがお付き合いのほど…
 
 ## 前提
 ### Firebaseとは
 [Firebase](https://firebase.google.com/?hl=ja)は、Googleが提供するBaaS(Backend as a Service)です。Firestoreと呼ばれるNoSQLのデータベースやFirebase Hostingなるホスティングサービス、更にはログイン機能を実装可能なFirebase Authentication等、Webアプリを開発する上で必要なものが一通り揃っています。無料枠も大きく、小規模であればほとんど無料枠内で開発ができちゃいます。また、管理画面のUIUXもわかりやすく、弊社devチームでは発足当初からほとんどすべてのサイト制作やアプリ制作をFirebaseを基盤として作成してきました。
 
 ### GitHub Actionsを使ったCI/CD環境
-devではサイト制作を含めて、JSのフレームワークを用いて開発を行っています。用途に応じて、Next.jsやGatsby.js、Nuxt.js等のフレームワークを使い分けて開発しています。これらフレームワークは、「ビルド」というコンパイルのような工程を経て、実際にサーバーにホスティングするためのhtml, css, jsのファイル群を生成します。ビルドを自動化したものをCI(Cotinuous Integration)、ビルドされたファイル群のホスティングを自動化したものをCD(Continuous Delivery)と呼びます。
+devではサイト制作も含めて、JSのフレームワークを用いて開発を行っています。用途に応じて、Next.jsやGatsby.js、Nuxt.js等のフレームワークを使い分けて開発しています。これらフレームワークは、「ビルド」というコンパイルのような工程を経て、実際にサーバーにホスティングするためのhtml, css, jsのファイル群を生成します。ビルドを自動化したものをCI(Cotinuous Integration)、ビルドされたファイル群のホスティングを自動化したものをCD(Continuous Delivery)と呼びます。
 
-GCPのCloud BuildやCircleCI等、CI/CDサービスはいくつかありますが、弊社devでは、2019年11月にリリースされたGitHub Actionsを使ってCI/CD環境を構築しています。指定したブランチへのpushをフックにActionsが走り、ビルドとホスティングまで完結してくれるので大変便利です。
+GCPのCloud BuildやCircleCI等、CI/CDサービスはいくつかありますが、弊社devでは、2019年11月にリリースされた[GitHub Actions](https://github.co.jp/features/actions)を使ってCI/CD環境を構築しています。指定したブランチへのpushをフックにActionsが走り、ビルドとホスティングまで完結してくれます。
 
 ## GitHub × Firebase
-さて、本題です。2020年10月、GitHubとFirebaseの連携が更に強化されました。Firebaseには**プレビューチャンネル**という機能があり、これは特定の期間のみ有効なランダムなURLをFirebaseが用意してくれる機能で、デバッグや期限付き公開に有効です。この機能とGitHub Actionsを連携させることで、Actionsによるビルドとプレビューチャンネルの発行を同時に行うことが可能になりました。つまり、例えば、PR作成と同時にプレビューチャンネルを発行し、レビュアーはそのURLでフロントの動作を確認することができます。
+さて、本題です。2020年10月、GitHubとFirebaseの連携が更に強化されました。Firebaseには**プレビューチャンネル**という機能があり、これは特定の期間のみ有効なランダムなURLをFirebaseが用意してくれる機能で、デバッグや期限付き公開に有効です。この機能とGitHub Actionsを連携させることで、Actionsによるビルドとプレビューチャンネルの発行が同時に行われます。つまり、例えば、PR作成と同時にプレビューチャンネルが自動で発行されるので、レビュアーはマージの前にそのURLでフロントの動作を確認することができます。
+
+特にフロントのアプリ開発では、実際にサーバーにホスティングされたときの動作のデバッグが重要になるので、非常に便利です。PR毎にプレビューチャンネルが発行されるので、キャッシュによる誤動作の心配もありません。更に、Firebaseのホワイトリストにも自動で登録されます。Amazingですね😎
+
+[[alert | プレビューチャンネルの注意点]]
+| プレビューチャンネルは、そのURLを知っている人なら誰もアクセスできるので、取り扱いには注意しましょう。
 
 ### 手順サマリー
 手順はいたってシンプル。
@@ -38,7 +43,7 @@ GCPのCloud BuildやCircleCI等、CI/CDサービスはいくつかあります�
 - buildの設定
 - slackへの通知
 
-ここらへんはカスタマイズしたいところですね。加えて、上記の実現に`FirebaseExtended/action-hosting-deploy@v0`という拡張機能を使うのですが、そのオプションの説明も以下で行います。
+ここらへんはカスタマイズしたいところですね。加えて、上記の実現に`FirebaseExtended/action-hosting-deploy@v0`という拡張機能を使うのですが、そのオプションの説明も後ほど行います。
 
 ### コマンドの実行
 まずは以下のコマンドを実行します。
@@ -174,10 +179,7 @@ devチームでは、ビルドのステータスをSlackで通知しています
     text: "😢 Deploy to Firebase FAILS..."
 ```
 
-
-
-
 ## Next Dev's HINT...
-今回は、GitHubの基本機能である、Issue、Project、Pull Requestについて、工夫していることを話しました。次回は、GitHub Actionsの話をする予定です。Firebase × GitHubがアツい。ぜひお楽しみに！
+いかがでしたでしょう。もはや一度使い始めると、離れられないくらい日々の開発に浸透しています。次回は…ちょっとまだ未定です笑。Firebase関連の短めのやつ書きますきっと。ではまた！
 
 ---
