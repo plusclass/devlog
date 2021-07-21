@@ -78,7 +78,7 @@ firebase init hosting:github
 
 上記の質問に答えれば、`firebase-hosting-pull-request.yml`と`firebase-hosting-merge.yml`の2つのファイルが`.github/workflows`の中にできているはず。例えば前者の中身を見てみると、
 
-```yaml:firebase-hosting-pull-request.yml
+```yaml
 name: Deploy to Firebase Hosting on PR
 'on': pull_request
 jobs:
@@ -109,10 +109,70 @@ jobs:
 Awesome!!!
 
 ### yamlの拡張
-ここまでコードレスで実現しましたが、先述したとおり、yamlファイルを拡張することでいろんな事ができます。
+ここまでコードレスで実現しましたが、先述したとおり、[Firebase Hostingに様々なオプション](https://github.com/FirebaseExtended/action-hosting-deploy)を使ってyamlファイルを拡張することでいろんな事ができます。その一部を紹介します。
 
 #### プレビューチャンネルの有効期限の指定
+生成されたプレビューチャンネルは、デフォルトでは1週間が有効期限です。それを`FirebaseExtended/action-hosting-deploy`のオプションを使って拡張することができます。以下例です。
 
+```yaml
+- uses: FirebaseExtended/action-hosting-deploy@v0
+    with:
+        repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_~ }}'
+        projectId: (プロジェクトID)
+        expires: 3d
+```
+
+他には、mergeのyamlでそうなっているように、`channelId`を`live`にすると、本番用のURLにホスティングされます。
+
+[[alert | 矛盾するオプション指定におけるエラー]]
+| 例えば上記、`channelId: live` にして、expiresオプションを付与するとエラーになります。本番用のURLに期限をつけることはできないので当然ですが、このように組み合わせ次第ではエラーになるものがあります。
+
+#### Slack通知
+devチームでは、ビルドのステータスをSlackで通知しています。ビルドに成功し、プレビューチャンネルが生成されれば、そのURLをSlackにも投げるようにしています。以下のように、[Outputs](https://github.com/FirebaseExtended/action-hosting-deploy#options)オプションを使えば、生成されたURLを取得し、Slackに投げることができます。以下、実際に使っているyamlの例です。
+
+```yaml
+- name: Produce preview channel
+  uses: FirebaseExtended/action-hosting-deploy@v0
+  id: firebase_hosting_preview // idをつけて、後に使えるように
+  with:
+    repoToken: '${{ secrets.GITHUB_TOKEN }}'
+    firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PCG_PROJ_007 }}'
+    channelId: development
+    projectId: pcg-proj-007
+    expires: 3d
+  env:
+    FIREBASE_CLI_PREVIEWS: hostingchannels
+- name: Slack Notification on SUCCESS of Deploy
+  if: success()
+  uses: tokorom/action-slack-incoming-webhook@master
+  env:
+    INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+  with:
+    text: "❤ SUCCESSFULLY deploy to Firebase. All done with no error!"
+    attachments: |
+      [
+        {
+          "color": "good",
+          "author_name": "${{ github.actor }}",
+          "author_icon": "${{ github.event.sender.avatar_url }}",
+          "fields": [
+            {
+              "title": "Hosting URL",
+              "value": "${{steps.firebase_hosting_preview.outputs.details_url}} \nexpired on ${{steps.firebase_hosting_preview.outputs.expire_time}}"
+              // steps.(id名).(Outputs名)でアクセス
+            }
+          ]
+        }
+      ]
+- name: Slack Notification on FAILURE of Firebase Deploy
+  if: failure()
+  uses: tokorom/action-slack-incoming-webhook@master
+  env:
+    INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+  with:
+    text: "😢 Deploy to Firebase FAILS..."
+```
 
 
 
