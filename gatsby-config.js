@@ -75,6 +75,11 @@ module.exports = {
         name: "Performance",
         slug: "performance",
         color: "#4184F3",
+      },
+      {
+        name: "HTML",
+        slug: "html",
+        color: "#DD4B25",
       }
     ],
   },
