@@ -44,6 +44,9 @@ exports.createPages = ({ graphql, actions }) => {
       if (post.node.frontmatter.category) {
         categories.push(post.node.frontmatter.category);
       }
+      if (post.node.frontmatter.category2) {
+        categories.push(post.node.frontmatter.category2);
+      }
     });
     categories = new Set(categories);
     categories.forEach(category => {
