@@ -1,8 +1,8 @@
 ---
 title: "devチームをつくる(1) - GitHub(3)"
 date: "2021-07-19T12:00:00.000Z"
-category: "github"
-category2: "firebase"
+category: "firebase"
+category2: "github"
 category3: ''
 description: "GitHub × Firebaseで、共同開発を加速させる"
 author: "motoi"
