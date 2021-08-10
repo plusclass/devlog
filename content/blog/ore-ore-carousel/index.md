@@ -1,9 +1,7 @@
 ---
 title: 'オレオレカルーセルを作りたいんじゃ'
 date: '2021-07-12T12:00:00.000Z'
-category: 'javascript'
-category2: 'css'
-category3: ''
+category: [javascript, css]
 description: 'Vanillaなやり方でカルーセルを自作する'
 author: 'goran'
 hero: 'hero.jpg'

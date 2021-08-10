@@ -1,9 +1,7 @@
 ---
 title: "ごあいさつ"
 date: "2021-06-16T12:00:00.000Z"
-category: "dev"
-category2: ""
-category3: ""
+category: [dev]
 description: "初めての投稿です。ご挨拶をば。"
 author: "motoi"
 hero: "hero.jpg"

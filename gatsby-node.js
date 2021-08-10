@@ -22,8 +22,6 @@ exports.createPages = ({ graphql, actions }) => {
                 author
                 description
                 category
-                category2
-                category3
               }
             }
           }
@@ -41,12 +39,12 @@ exports.createPages = ({ graphql, actions }) => {
     // ref: https://www.gatsbyjs.org/docs/adding-tags-and-categories-to-blog-posts/
     let categories = [];
     posts.forEach(post => {
-      if (post.node.frontmatter.category) {
-        categories.push(post.node.frontmatter.category);
+      post.node.frontmatter.category.forEach(category => {
+        if (category) {
+          categories.push(category);
+        }
       }
-      if (post.node.frontmatter.category2) {
-        categories.push(post.node.frontmatter.category2);
-      }
+      )
     });
     categories = new Set(categories);
     categories.forEach(category => {
@@ -78,18 +76,18 @@ exports.createPages = ({ graphql, actions }) => {
 
       // setup related posts
       // get the posts that has same categories.
-      let relatedPosts = allRelatedPosts[post.node.frontmatter.category];
+      // let relatedPosts = allRelatedPosts[post.node.frontmatter.category];
       // remove myself
-      relatedPosts = relatedPosts.filter(relatedPost => {
-        return !(relatedPost.node.fields.slug === post.node.fields.slug);
-      });
+      // relatedPosts = relatedPosts.filter(relatedPost => {
+      //   return !(relatedPost.node.fields.slug === post.node.fields.slug);
+      // });
 
       createPage({
         path: post.node.fields.slug,
         component: path.resolve(`./src/templates/post.js`),
         context: {
           slug: post.node.fields.slug,
-          relatedPosts
+          // relatedPosts
         }
       });
     });

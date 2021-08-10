@@ -1,9 +1,7 @@
 ---
 title: "Cloud Functionsで環境変数を使う"
 date: "2021-08-02T12:00:00.000Z"
-category: "firebase"
-category2: "functions"
-category3: ""
+category: [firebase, functions]
 description: "バックエンド開発に便利なCloud Functions for Functionsにおける環境変数の設定方法をメモ"
 author: "motoi"
 hero: "hero.jpg"

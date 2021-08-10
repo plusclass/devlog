@@ -80,6 +80,11 @@ module.exports = {
         name: "HTML",
         slug: "html",
         color: "#DD4B25",
+      },
+      {
+        name: "Release",
+        slug: "release",
+        color: "#e00009",
       }
     ],
   },

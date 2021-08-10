@@ -41,49 +41,49 @@ const PostJsonLD = ({ title, description, date, categorySlug, url }) => {
 
         //bread crumbs
         //get category name from slug
-        const categoryObject = categories.find((cat) => {
-          return cat.slug === categorySlug;
-        });
-        const categoryName = categoryObject
-          ? categoryObject.name
-          : categorySlug;
+        // const categoryObject = categories.find((cat) => {
+        //   return cat.slug === categorySlug;
+        // });
+        // const categoryName = categoryObject
+        //   ? categoryObject.name
+        //   : categorySlug;
 
-        const jsonBreadCrumbs = {
-          "@context": "http://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              item: {
-                "@id": siteUrl,
-                name: "Top",
-              },
-            },
-            {
-              "@type": "ListItem",
-              position: 2,
-              item: {
-                "@id": `${siteUrl}/${categorySlug}`,
-                name: categoryName,
-              },
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
-              item: {
-                "@id": url,
-                name: title,
-              },
-            },
-          ],
-        };
+        // const jsonBreadCrumbs = {
+        //   "@context": "http://schema.org",
+        //   "@type": "BreadcrumbList",
+        //   itemListElement: [
+        //     {
+        //       "@type": "ListItem",
+        //       position: 1,
+        //       item: {
+        //         "@id": siteUrl,
+        //         name: "Top",
+        //       },
+        //     },
+        //     {
+        //       "@type": "ListItem",
+        //       position: 2,
+        //       item: {
+        //         "@id": `${siteUrl}/${categorySlug}`,
+        //         name: categoryName,
+        //       },
+        //     },
+        //     {
+        //       "@type": "ListItem",
+        //       position: 3,
+        //       item: {
+        //         "@id": url,
+        //         name: title,
+        //       },
+        //     },
+        //   ],
+        // };
         return (
           <Helmet>
             <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-            <script type="application/ld+json">
+            {/* <script type="application/ld+json">
               {JSON.stringify(jsonBreadCrumbs)}
-            </script>
+            </script> */}
           </Helmet>
         );
       }}
