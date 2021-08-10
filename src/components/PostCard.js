@@ -147,9 +147,11 @@ const PostCard = ({ node }) => {
               </div>
             </div>
             <p className="description">{node.frontmatter.description}</p>
-            <CategoryLabel slug={node.frontmatter.category} />
-            <CategoryLabel slug={node.frontmatter.category2} />
-            <CategoryLabel slug={node.frontmatter.category3} />
+            {node.frontmatter.category.map((category) => {
+                return (
+<CategoryLabel slug={category} />
+                )
+              })}
           </div>
         </PostCardContent>
       </Link>

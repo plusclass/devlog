@@ -59,7 +59,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
+      filter: { frontmatter: { category: { in: [$category] } } }
     ) {
       edges {
         node {
@@ -71,8 +71,6 @@ export const pageQuery = graphql`
             title
             author
             category
-            category2
-            category3
             ogp {
               childImageSharp {
                 fluid(maxWidth: 1280) {
