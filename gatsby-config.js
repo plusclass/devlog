@@ -85,6 +85,11 @@ module.exports = {
         name: "Release",
         slug: "release",
         color: "#e00009",
+      },
+      {
+        name: "GCS",
+        slug: "gcs",
+        color: "#4285F4",
       }
     ],
   },
