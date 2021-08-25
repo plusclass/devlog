@@ -29,7 +29,6 @@ const ShareLink = styled.a`
 `;
 
 const ShareButtons = ({ title, slug }) => {
-  console.log(slug);
   const encodedTitle = encodeURIComponent(
     `${title}`
   );
