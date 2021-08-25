@@ -2,7 +2,7 @@
 title: 'レスポンシブ対応におけるビューポート制御'
 date: '2021-07-30T12:00:00.000Z'
 category: [javascript]
-description: 'タブレットや極小スマホに対応するマークアップのツラさを少しだけ和らげる動的なviewport設定。'
+description: 'タブレットや極小スマホに対応するマークアップのツラさを少しだけ和らげる動的なviewport設定'
 author: 'goran'
 hero: 'hero.jpg'
 ogp: 'ogp.jpg'
