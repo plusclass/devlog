@@ -83,7 +83,7 @@ const PostCardWrapper = styled.div`
     }
   }
   &.new:not(:first-child) {
-    width: 374px;
+    width: 370px;
     .post-card-link {
         margin: 0.5em 0;
         .content {
@@ -217,7 +217,6 @@ const PostCardContent = styled.div`
 
 const PostCard = ({ node, classProp }) => {
   const title = node.frontmatter.title || node.fields.slug;
-  console.log(classProp)
 
   return (
     <PostCardWrapper className={classProp}>

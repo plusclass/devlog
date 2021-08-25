@@ -178,7 +178,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
-        date(formatString: "YYYY.MM.DD")
+        date(formatString: "YYYY/MM/DD")
         author
         category
         hero {
