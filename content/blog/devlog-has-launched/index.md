@@ -2,7 +2,7 @@
 title: "devlog has lauched."
 date: "2021-06-11T12:00:00.000Z"
 category: [dev, release]
-description: "テックブログを開設しました。"
+description: "テックブログを開設しました"
 author: "goran"
 hero: "hero.jpg"
 ogp: "ogp.jpg"
@@ -63,7 +63,7 @@ ogp: "ogp.jpg"
 - Webデザイン
 - チーム作り
 
-## 最後に
+## おわりに
 このブログを通して**スポーツ業界のWebってこんな感じなんだ〜**もお届けできると思います。コツコツやっていきますので、どうぞよろしくお願いいたします。
 **どこかの技術者さんのためになること**も夢見て。
 
