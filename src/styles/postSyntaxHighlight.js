@@ -51,7 +51,7 @@ const SyntaxHighlightStyle = css`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: rgba(255, 255, 255, 0.6);
+    color: #696969;
   }
   .token.boolean,
   .token.number {
