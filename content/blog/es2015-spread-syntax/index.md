@@ -14,7 +14,7 @@ ogp: 'ogp.jpg'
 `...`を使うと配列やオブジェクトに関する**展開**について、以下の操作を行えます。（文字列の展開とかもできます）
 
 - 配列・オブジェクトの連結
-- 配列のコピーを生成
+- 配列・オブジェクトのコピーを生成
 - 配列の残り全部
 - 関数の引数を配列として受け取る
 
@@ -26,7 +26,7 @@ const arrB = ['piyo'];
 const arrC = [...arrA, ...arrB];
 ```
 
-オブジェクトに対しては`Object.assign()`の操作が可能です。
+ES2018ではオブジェクトリテラルでのスプレッド構文が追加されています。オブジェクトに対しては`Object.assign()`の操作が可能です。
 ```js:title=オブジェクト
 const objA = {
   member1: 'hoge',
@@ -48,12 +48,10 @@ const objB = {
 `reverse()`などの破壊的変更を持つメソッドを使う際に利用できます。
 ```js:title=配列
 const arrA = ['hoge', 'fuga'];
-const [last] = arrA.reverse();
-const arrA = ['hoge', 'fuga'];
 const [last] = [...arrA].reverse();
 ```
 
-ES2018ではオブジェクトリテラルでのスプレッド構文が追加されています。
+オブジェクトリテラルでのスプレッド構文でもオブジェクトのコピーを作成できます。
 ```js:title=オブジェクト
 let obj1 = { foo: 'bar', x: 42 };
 let clonedObj = { ...obj1 };
