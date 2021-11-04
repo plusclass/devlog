@@ -1,85 +1,97 @@
 ---
-title: "素晴らしきFirebaseのカスタムクレーム"
-date: "2021-09-05T12:00:00.000Z"
-category: [firebase]
-description: "Authを拡張して、より柔軟なアプリケーション開発を実現する"
+title: "Node.jsでSlackの定期botを作ってみた"
+date: "2021-11-04T12:00:00.000Z"
+category: [firebase, functions]
+description: "Cloud Functions for Firebaseを使ってSlackの定期botを作ってみた話"
 author: "motoi"
 hero: "hero.jpg"
 ogp: "ogp.jpg"
 ---
 
 ## はじめに
-こんにちは！motoiです。今回もFirebase関連の話を。そうです。僕はFirebaseが好きなんです。AWS派の方、まだ間に合います。ぜひGCP/Firebaseを。
-今回は、Firebaseを使ったアプリケーション開発をより拡張するためのカスタムクレームという機能をご紹介します。
-## カスタムクレーム
-基本的には[公式](https://firebase.google.com/docs/auth/admin/custom-claims?hl=ja)の内容に沿います。
-### ユーザー情報を拡張できる
-端的に言うと、Firebase Authenticationを拡張するための機能です。FirebaseのAuthenticationを使ってユーザーを作成すると、デフォルトでいくつかの値がユーザー情報に乗っかっています。その情報は、Firebase JS SDKの`currentUser`プロパティを用いて、以下のように取得することができます。
+こんにちは！motoiです。実はもうすぐ新メンバーがジョインするんです！！まだ正式に決まったわけではないですが、その際にはぜひここでもご挨拶を…
 
-```js:title=index.js
-const user = firebase.auth().currentUser;
-if (user !== null) {
-  // The user object has basic properties such as display name, email, etc.
-  const displayName = user.displayName;
-  const email = user.email;
-  const photoURL = user.photoURL;
-  const emailVerified = user.emailVerified;
+さて、やってみた系の話も少しずつ紹介していこうかなということで、今回はCloud Functions for Firebaseを使って、Slackのbotを作ってみた話をしたいと思います！
 
-  // The user's ID, unique to the Firebase project. Do NOT use
-  // this value to authenticate with your backend server, if
-  // you have one. Use User.getToken() instead.
-  const uid = user.uid;
-}
+## 手順
+まずおおまかな手順をいかに示します。
+1. Functionsの環境を用意(Node.jsをTypeScriptで)
+2. `functions.pubsub`を使用して関数をスケジューリング
+3. Slack APIをたたく
+
+Functionsの環境を用意する手順は、ここでは割愛します。特段必要がない限り、FunctionsはNode.jsで言語はTypeScriptを採用しています。
+### functions.pubsub
+基本的には[公式](https://firebase.google.com/docs/functions/schedule-functions?hl=ja)に従います。
+
+```typescript:title=index.ts
+exports.scheduledFunction = functions.pubsub.schedule('every 5 minutes')
+.onRun((context) => {
+   ~~~
+})
 ```
 
-カスタムクレームを使えば、これらの値を任意に拡張することができます。例えば、`auth`というカスタムクレームを作り、`admin`と`editor`でフロントにて実行可能領域を分けることができます。
+たったこれだけで5分おきに実行される関数が作れました！！
 
-### Firebase JS SDK と Firebase Admin SDK
-実際にカスタムクレームを付与する前に、Firebase JS SDKとFirebase Admin SDKについて触れておくことが必要でしょう。平たく言うと、Firebaseの機能の中でも、ユーザーの作成やユーザー情報そのものの操作等のセキュアな内容を扱うライブラリがFirebase Admin SDKです。[公式](https://firebase.google.cn/docs/admin/setup?hl=ja)では'**priviledged environments**'(特権環境)と表現されているサーバーのみで動かすことができ、フロント側でFirebase Admin SDKのライブラリを使用することはできません。そこで、Cloud Functionsを使って動かすことになるのですが、詳しくはまた別の記事で。
+scheduleの引数には[App Engine構文](https://cloud.google.com/appengine/docs/flexible/custom-runtimes/configuring-your-app-with-app-yaml?hl=ja)、あるいは[unix-cron形式](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules?&_ga=2.32681150.-1863898187.1631346775&_gac=1.47456597.1633531396.CjwKCAjwkvWKBhB4EiwA-GHjFnz6CFsFzeuBn38ONT91eh5eVJdirdPWvUJjX_8LK_gmXpdOHDpxXRoCiscQAvD_BwE#defining_the_job_schedule)が使用できます。後者で設定した場合、デフォルトのタイムゾーンが`America/Los_Angeles`になるので、必要であれば、`timeZone`プロパティで設定します。timeZoneの引数で設定できるのはtz databaseのタイムゾーンであり、例えば東京は、`Asia/Tokyo`です。
 
-察しのよい方はお気づきかと思いますが、カスタムクレームもFirebase Admin SDKを使うことでしか付与することができません。先述の通り、カスタムクレームはユーザー情報の拡張であり、Firebase Admin SDKの守備範囲に分類されるためです。
-
-### カスタムクレームの付与
-さて、実際に付与してみましょう。非常に簡単です。以下のjsを用意し、Cloud Functionsにデプロイして使用します。`setCustomUserClaims`メソッドはFirebase Admin SDKのメソッドです。
-
-```js:title=custom_claim.js
-const customClaimObj = {
-    auth: 'admin',
-    type: 'customer'
-}
-
-auth
-  .setCustomUserClaims(uid, customClaimObj)
-  .then(async () => {
-  })
-  .catch((error) => {
-    console.log('ERROR to update partner user: ', error)
-  })
+```typescript:title=index.ts
+exports.scheduledFunctionCrontab = functions.pubsub.schedule('0 11 * * *')
+.timeZone('Asia/Tokyo')
+.onRun((context) => {
+  ~~~
+})
 ```
 
-はい、たったこれだけで、`customClaimObj`で定義した`auth`と`type`がユーザー情報に付与されます。これで、フロント側では、先程の`currentUser`を使ってユーザーの`auth`や`type`を取得し、表示させるページを限定したり、実行できるメソッドを制限したり、より柔軟なユーザー管理を行うことが可能になりました。
+例えば上記だと、毎日東京時刻の午前11時に関数が実行されます。
 
-### カスタムクレームはいつでも上書きされる
-非常に重要な注意点です。カスタムクレームは常に前の情報に上書きされるので、新しく付与しようとして、上記のjsを実行すると前に登録したカスタムクレームは消えてしまいます。そこで、新しく別のカスタムクレームを付与するためには、現在設定されているカスタムクレームを取得し、再度一緒に付与してやる必要があります。
+[[alert | timeZoneが効かない]]
+| 上記のようにtimeZoneを設定しても、なぜかデフォルトのロサンゼルス時間のままでした…後に紹介する方法で手動でタイムゾーンを変更しましたが、どなたか解決方法知っている方いたら教えて下さい…！
 
-```js:title=custom_claim_addition.js
-const additionalObj = {...customClaimObj, ...addition}
+### Slack API
+[Slack App](https://api.slack.com/apps)を作成し、botを投稿したいワークスペースのチェンネルを選択し、Webhookを作成します。このあたりの手順も記事に書きたいと思いますが、一旦今は割愛します。
 
-auth
-  .setCustomUserClaims(uid, additionalObj)
-  .then(async () => {
-  })
-  .catch((error) => {
-    console.log('ERROR to update partner user: ', error)
-  })
+上記で得たWebhook URLを環境変数に設定します。Functionsの環境変数の設定の仕方は以前[こちらの記事](https://dev.plus-class.jp/env-cloud-functions/)で紹介した通りです。
+
+```typescript:title=index.ts
+exports.firstReminder = functions.region('asia-northeast1').pubsub.schedule('0 10 * * *')
+.timeZone('Asia/Tokyo')
+.onRun(async (context) => {
+  if (!judgeHoliay()) {
+    const array = [
+      `今日も頑張りましょう☀️`,
+    ]
+    const data = {
+      text: array.join('\n')
+    }
+    const slackAPI = functions.config().slack_app.api
+    await axios.post(
+      slackAPI,
+      data,
+      {
+        headers: { 'Content-type': 'application/json' }
+      }
+    )
+  }
+
+  return null
+})
 ```
 
-### 登録可能な値と型
-基本、Firestoreで用意されている型はすべて登録が可能です。オブジェクト型や配列型に加えて、それらがネストされていても登録が可能です。ただし、値に日本語を入れると以下のように文字化けしてしまうので注意が必要です。
+上記が実際のコードです。毎日10時になったら「今日も頑張りましょう☀️」とbotが挨拶してくれます(下画像)。4行目の`judgeHoliday()`は別で定義した関数で、土日祝日も関係なく毎日このfunctionは走るので、土日祝日の場合は、Webhookをたたかないようにしています。後は見ての通りです。環境変数のWebhook URLにaxiosでpostしています。
 
-![image](possible_values.png)
+![image](slack_app.png)
+
+[[info | 祝日の取得]]
+| 日本の祝日の取得は、`@holiday-jp/holiday_jp`を使っています。[npm等でインストール](https://www.npmjs.com/package/@holiday-jp/holiday_jp)できます。
+
+### Firebaseのコンソールで確認してみる
+上記を記述したfunctionをデプロイし、Firebaseのコンソールで確認してみると、トリガーに時計マークがついていました。そして、設定を開いてみると、「Cloud Schedulerで表示」という項目が。GCPにCloud Schedulerという機能があり、そちらで管理が可能です。編集をすれば、先ほどの`schedule`の引数と`timeZone`の引数がコンソール側で設定できます。先述の通り、`timeZone`がうまく設定されなかったので、この方法を使って手動で設定しています。
+
+
+![image](function.png)
+![image](gcp.png)
 
 ## Next Dev's HINT...
-カスタムクレームを使えばアプリケーションの幅をとてつもなく広げることが可能なので、ぜひご活用のほど。次回も多分Firebase関連の記事にしますねこの調子じゃ。
+どうでしたでしょう。Cloud FunctionsとSlack APIを使えば、非常に簡単にbotを作ることができました。APIをたたくだけなので、もちろんSlack以外も簡単にできます。次回は…またまた未定です笑 (もはやNext Dev's HINTというタイトルやめようかな…コナンを真似したんだけど…)
 
 ---
