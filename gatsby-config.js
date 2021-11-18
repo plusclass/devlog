@@ -18,6 +18,13 @@ module.exports = {
         color: "#000",
         text: "ベンチャーでエンジニアをしています。工学博士です。技術が好きです。強くて楽しいdevチームを作っています。Like #soccer #realmadrid #mrchildren #apple #saintlaurent #droledemonsieur #pool🎱",
         site: "https://linktr.ee/motoi.dev/"
+      },
+      sugi: {
+        name: "dev_sugi",
+        slug: "sugi",
+        color: "#00FFFF",
+        text: "エンジニアはじめました。",
+        site: ""
       }
     },
     categories: [

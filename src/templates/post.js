@@ -168,6 +168,13 @@ export const pageQuery = graphql`
             text
             site
           }
+          sugi {
+            name
+            slug
+            color
+            text
+            site
+          }
         }
       }
     }

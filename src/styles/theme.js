@@ -10,6 +10,7 @@ const variables = {
     bgLight: "#F5F5F7",
     goran: "#A138D9",
     motoi: "#000",
+    sugi: "#00FFFF",
     alert: "#C41212",
     notice: "#12729D",
   },
