@@ -33,6 +33,7 @@ ogp: "ogp.jpg"
 - Python
   - Numpy
   - Pandas
+
 等です。
 
 ## 最後に
