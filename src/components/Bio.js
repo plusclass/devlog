@@ -67,7 +67,7 @@ const BioLink = styled.a`
   font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
 `;
 
-const Bio = ( postProp ) => {
+const Bio = (postProp) => {
   return (
     <StaticQuery
       query={bioQuery}
@@ -82,7 +82,7 @@ const Bio = ( postProp ) => {
             <BioHeader>
               <AvatarImage src={`/images/${author}.jpg`} alt={bio[author].name} />
               <BioName>
-                <a style={{color: bio[author].color }} href={`https://twitter.com/${bio[author].name}`}>@{bio[author].name}</a>
+                <a style={{ color: bio[author].color }} href={`https://twitter.com/${bio[author].name}`}>@{bio[author].name}</a>
               </BioName>
             </BioHeader>
             <BioMain>
@@ -90,11 +90,13 @@ const Bio = ( postProp ) => {
                 {bio[author].text}
               </BioText>
               <BioLinks>
-                <BioLink href={bio[author].site}>
-                  <div style={{color: bio[author].color }}>Site</div>
-                </BioLink>
+                {!!bio[author].site &&
+                  <BioLink href={bio[author].site}>
+                    <div style={{ color: bio[author].color }}>Site</div>
+                  </BioLink>
+                }
                 <BioLink href={`https://twitter.com/${bio[author].name}`}>
-                  <div style={{color: bio[author].color }}>Twitter</div>
+                  <div style={{ color: bio[author].color }}>Twitter</div>
                 </BioLink>
               </BioLinks>
             </BioMain>
@@ -118,6 +120,13 @@ query bioQuery {
           site
         }
         motoi {
+          name
+          slug
+          color
+          text
+          site
+        }
+        sugi {
           name
           slug
           color
