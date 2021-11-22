@@ -35,7 +35,7 @@ module.exports = {
       },
       {
         name: "React/Next",
-        slug: "reat",
+        slug: "react",
         color: "#61dafb",
       },
       {
