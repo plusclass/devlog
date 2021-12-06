@@ -9,7 +9,7 @@ ogp: "ogp.jpg"
 ---
 
 ## はじめまして
-[株式会社プラスクラス](https://plus-class.co.jp/)、および[プラスクラス・スポーツ・インキュベーション株式会社](https://plusclass-sports-incubation.co.jp/)でフロントエンドエンジニアをやってます宮川と言います。インターネットでは[**GORAN_NASAI**](https://goran-nasai.com/)というハンドルネームでやってます。
+[株式会社プラスクラス](https://plus-class.co.jp/)、および[プラスクラス・スポーツ・インキュベーション株式会社](https://plusclass-sports-incubation.co.jp/)でフロントエンドエンジニアをやってます宮川と言います。インターネットでは[**`GORAN`_NASAI**](https://goran-nasai.com/)というハンドルネームでやってます。
 
 かねてよりWebマーケティングを中心にスポーツ業界のDXに注力してきた弊社に、昨期**待望の**エンジニアチームが発足されました。
 

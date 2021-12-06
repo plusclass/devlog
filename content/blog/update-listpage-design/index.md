@@ -8,7 +8,7 @@ hero: 'hero.jpg'
 ogp: 'ogp.jpg'
 ---
 
-こんにちは。GORAN です。今日も弊ブログについての話です。
+こんにちは。`GORAN` です。今日も弊ブログについての話です。
 
 改めてですが、弊ブログは[オープンになっております](https://github.com/plusclass/devlog)。
 リポにある[Update Progress](https://github.com/orgs/plusclass/projects/1)という`Project`から取り組んでいるアップデート事項を確認することができます。
