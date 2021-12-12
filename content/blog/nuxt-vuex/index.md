@@ -1,8 +1,8 @@
 ---
 title: "NuxtでVuexを"
 date: "2021-12-13T12:00:00.000Z"
-category: [firebase]
-description: "Authを拡張して、より柔軟なアプリケーション開発を実現する"
+category: [Nuxt]
+description: "vuex-module-decoratorsの紹介"
 author: "motoi"
 hero: "hero.jpg"
 ogp: "ogp.jpg"
@@ -127,6 +127,6 @@ sampleMethod() {
 これは`vuex-module-decorators`に限った話ではないですが、mutationとactionは、引数の数は1つだけです。なので、上記の例のように、複数の値を同時に状態管理したければ、オブジェクト形式にします。もちろん、関連する値であれば、です。全く関係のないものをオブジェクトに入れて状態管理するのは好ましくありません。ファイルの準備が少し面倒かもしれませんが、その際はちゃんと別ファイルに分けて作成しましょう。
  
 ## Next Dev's HINT...
-次は少し一年を振り返った内容にしようかなと考えています。それでは！
+デフォルトの方法に加えて、NuxtでVuexを使う方法はいくつかあるのですが、個人的にはその中でももっとも分かり良かった`vuex-module-decorators`を今回は紹介しました。次は少し一年を振り返った内容にしようかなと考えています。それでは！
 
 ---
