@@ -102,6 +102,11 @@ module.exports = {
         name: "Nuxt",
         slug: "nuxt",
         color: "#02DC81"
+      },
+      {
+        name: "Vuex",
+        slug: "vuex",
+        color: "#797979"
       }
     ],
   },
