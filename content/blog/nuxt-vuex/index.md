@@ -1,7 +1,7 @@
 ---
 title: "NuxtでVuexを"
 date: "2021-12-13T12:00:00.000Z"
-category: [Nuxt]
+category: [nuxt]
 description: "vuex-module-decoratorsの紹介"
 author: "motoi"
 hero: "hero.jpg"

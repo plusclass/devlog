@@ -97,6 +97,11 @@ module.exports = {
         name: "GCS",
         slug: "gcs",
         color: "#4285F4",
+      },
+      {
+        name: "Nuxt",
+        slug: "nuxt",
+        color: "#02DC81"
       }
     ],
   },
