@@ -1,5 +1,5 @@
 ---
-title: "NuxtでVuexを"
+title: "NuxtでVuexをより簡単に使う"
 date: "2021-12-13T12:00:00.000Z"
 category: [nuxt, vuex]
 description: "vuex-module-decoratorsの紹介"
