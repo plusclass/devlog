@@ -1,6 +1,6 @@
 ---
 title: "AMPのこれまでとこれから"
-date: "2021-12-21T12:00:00.000Z"
+date: "2021-12-22T12:00:00.000Z"
 category: [amp]
 description: "GORANなりの見解"
 author: "goran"
