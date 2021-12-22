@@ -107,6 +107,11 @@ module.exports = {
         name: "Vuex",
         slug: "vuex",
         color: "#797979"
+      },
+      {
+        name: "AMP",
+        slug: "amp",
+        color: "#0379C4"
       }
     ],
   },
