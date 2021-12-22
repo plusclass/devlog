@@ -13,7 +13,7 @@ ogp: "ogp.jpg"
 半年くらい前に[Core Web Vitalsについて](/core-web-vitals/)という記事で「`AMP`オワコンというわけでもないぞ」という主旨のことをつぶやいておりましたが、その理由も今回語ろうと思っています。
 
 ## はじめに
-`AMP`が[発表されたのは2015年](https://blog.google/products/search/introducing-accelerated-mobile-pages/)、[リリースれたのは2016年](https://developers-jp.googleblog.com/2016/02/google-accelerated-mobile-pages.html)でして、プロジェクト自体はかれこれ6年モノになります。僕としては[uskay](https://twitter.com/uskay)氏の勉強会が`AMP`との出会いでして、2017年の5月くらいだった記憶です。
+`AMP`が[発表されたのは2015年](https://blog.google/products/search/introducing-accelerated-mobile-pages/)、[リリースされたのは2016年](https://developers-jp.googleblog.com/2016/02/google-accelerated-mobile-pages.html)でして、プロジェクト自体はかれこれ6年モノになります。僕としては[uskay](https://twitter.com/uskay)氏の勉強会が`AMP`との出会いでして、2017年の5月くらいだった記憶です。
 当時は「ページ読み込みに3秒かかったら53%が離脱する」みたいなキャッチフレーズで、表示速度への問題提起とセットにして売り出されてましたね。
 
 ### リリースの背景
