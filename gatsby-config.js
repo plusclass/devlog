@@ -25,6 +25,13 @@ module.exports = {
         color: "#00FFFF",
         text: "エンジニアはじめました。",
         site: ""
+      },
+      yapi: {
+        name: "yapimaru_Eng",
+        slug: "yapi",
+        color: "#002E66",
+        text: "webサイトやアプリ、AIなどさまざまな技術に興味を持っています。",
+        site: "https://taketoyahiro.com"
       }
     },
     categories: [

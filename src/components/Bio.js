@@ -133,6 +133,13 @@ query bioQuery {
           text
           site
         }
+        yapi {
+          name
+          slug
+          color
+          text
+          site
+        }
       }
     }
   }

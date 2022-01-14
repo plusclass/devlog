@@ -11,6 +11,7 @@ const variables = {
     goran: "#A138D9",
     motoi: "#000",
     sugi: "#00FFFF",
+    yapi: "#002E66",
     alert: "#C41212",
     notice: "#12729D",
   },
