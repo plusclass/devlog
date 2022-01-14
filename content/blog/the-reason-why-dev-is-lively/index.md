@@ -3,7 +3,7 @@ title: "Biz起点の組織でdevがイキイキしている理由"
 date: "2021-12-06T12:00:00.000Z"
 category: [dev]
 description: "現時点での分析"
-author: "goran"
+author: "yapi"
 hero: "hero.jpg"
 ogp: "ogp.jpg"
 ---
