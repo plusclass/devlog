@@ -1,97 +1,38 @@
 ---
-title: "Node.jsでSlackの定期botを作ってみた"
-date: "2021-11-04T12:00:00.000Z"
-category: [firebase, functions]
-description: "Cloud Functions for Firebaseを使ってSlackの定期botを作ってみた話"
+title: "devの2022年が始動しました"
+date: "2022-01-16T12:00:00.000Z"
+category: [dev]
+description: "あけましておめでとうございます🐯"
 author: "motoi"
 hero: "hero.jpg"
 ogp: "ogp.jpg"
 ---
 
 ## はじめに
-こんにちは！motoiです。実はもうすぐ新メンバーがジョインするんです！！まだ正式に決まったわけではないですが、その際にはぜひここでもご挨拶を…
+遅ればせながら、あけましておめでとうございます🐯年始、少しばたついていて更新が遅くなりました。今年は今まで以上に発信できればと思いますので、引き続きご愛顧の程、よろしくお願いいたします🥺
 
-さて、やってみた系の話も少しずつ紹介していこうかなということで、今回はCloud Functions for Firebaseを使って、Slackのbotを作ってみた話をしたいと思います！
+## ハッピーニューカマー！
+そうです、1月4日より弊devチームに社員として3人目が加わりました！めでたい👏2020年4月にdevチームが私motoiとgoranに2人で始動してから約1年9ヶ月、待望の3人目です。その名も、[やっぴ](https://twitter.com/yapimaru_Eng)！24歳の新卒です。彼のプロフィールについては、そのうち彼自身が言ってくれるとして、とにかくエンジニアとしての素質に溢れた子で、まだ入社してから2週間程ですが、強烈なインパクトを残しています。そして何より一緒に仕事をしていて気持ちがいい！技術力やポテンシャル以上に弊社が大事にしている「人」の部分で、motoiもgoranも惹かれています。もちろん、僕ら以外の会社のメンバーも既にこんなツイートを…
 
-## 手順
-まずおおまかな手順をいかに示します。
-1. Functionsの環境を用意(Node.jsをTypeScriptで)
-2. `functions.pubsub`を使用して関数をスケジューリング
-3. Slack APIをたたく
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">まだそんなに話したことないけど、やっぴーはなんか愛くるしいんだよなー。<br>癒される😌 <a href="https://t.co/PPCqdOecPf">https://t.co/PPCqdOecPf</a></p>&mdash; 條 靖哉（Seiya Jo） (@jooosei) <a href="https://twitter.com/jooosei/status/1482305597630717956?ref_src=twsrc%5Etfw">January 15, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Functionsの環境を用意する手順は、ここでは割愛します。特段必要がない限り、FunctionsはNode.jsで言語はTypeScriptを採用しています。
-### functions.pubsub
-基本的には[公式](https://firebase.google.com/docs/functions/schedule-functions?hl=ja)に従います。
+とにかくこれからが楽しみで仕方ない弊devチームです！ご興味ある方、TwitterのDMでのご連絡お待ちしています！
+## devチームの開発も加速させていきます
+僕自身この度、devチームのマネジャーを拝命しました。弊社も50人近い会社になり、取締役が3人、マネジャーが僕含めて2人ですので、他の会社におけるマネジャーの役割はどうかはわかりませんが弊社のマネジャーは、自チームのマネジメントはもちろんのこと、経営にまで考えを及ぼさなければなりません。経営的視点を持ちながらdevチームを前へ推進させていき、その推進力が会社全体に伝わるような働きをしていくことがなお一層必要になる2022年だと考えています。
 
-```typescript:title=index.ts
-exports.scheduledFunction = functions.pubsub.schedule('every 5 minutes')
-.onRun((context) => {
-   ~~~
-})
-```
+### ミッション・ビジョン・スタンダード・アイデンティティ
+よく会社経営の話で出てくる「ミッション・ビジョン・バリュー」です。代表の平地が「バリュー」というワードに対してあまりピンとこず、「アイデンティティ」と弊社では呼んでいます(この辺の代表のワードセンスが僕はいつも好きなんです)。それに加えて弊社ではスタンダードというものがあります。
 
-たったこれだけで5分おきに実行される関数が作れました！！
+![image](vmsi.png)
 
-scheduleの引数には[App Engine構文](https://cloud.google.com/appengine/docs/flexible/custom-runtimes/configuring-your-app-with-app-yaml?hl=ja)、あるいは[unix-cron形式](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules?&_ga=2.32681150.-1863898187.1631346775&_gac=1.47456597.1633531396.CjwKCAjwkvWKBhB4EiwA-GHjFnz6CFsFzeuBn38ONT91eh5eVJdirdPWvUJjX_8LK_gmXpdOHDpxXRoCiscQAvD_BwE#defining_the_job_schedule)が使用できます。後者で設定した場合、デフォルトのタイムゾーンが`America/Los_Angeles`になるので、必要であれば、`timeZone`プロパティで設定します。timeZoneの引数で設定できるのはtz databaseのタイムゾーンであり、例えば東京は、`Asia/Tokyo`です。
+会社として、ミッション・スタンダードは決まっていました。そしてこの度、アイデンティティが決まり、更にもうすぐビジョンが決まろうとしています。これらを基にdevチームとしては昨年、**テクノロジーでクライアントの進化をカタチに**というミッションを掲げてやってきました。新しく決まったアイデンティティ、そして決まろうとしているビジョンを元にdevチームとしてのそれらを考えていければと思っています。弊devチームにおけるエンジニアは何が求められるのか、どういうビジョンの元、ミッションを遂行していくのか。メンバーとともに考えていきます。
 
-```typescript:title=index.ts
-exports.scheduledFunctionCrontab = functions.pubsub.schedule('0 11 * * *')
-.timeZone('Asia/Tokyo')
-.onRun((context) => {
-  ~~~
-})
-```
+### パートナーも続々と…
+続々とパートナーさんもジョインしてくれています。自社アプリの開発に、僕の研究室時代の後輩1人に加えて、新たに2人、計3人のパートナーさんが働くことになりました🙌加えて、弊社はクラブチームさんの制作案件も多くやらせていただいているので、そちらのコーディングに2人+2つの会社さんがパートナーとして働いてくれています。もちろん、まだまだ一緒に働いてくれるパートナーさん(もちろん正社員も…)を募集中ですので、こちらも興味ある方いらっしゃったら、TwitterのDMにてご連絡ください📨
 
-例えば上記だと、毎日東京時刻の午前11時に関数が実行されます。
+## さいごに
+毎年言ってるのですが、2022年は本当に勝負の年です。厳しい場面もたくさんあるんだろうなと思いながら、でも確実に積み上がってきているものを土台に、さらなる進化を求めて走り続ける2022年にします。
 
-[[alert | timeZoneが効かない]]
-| 上記のようにtimeZoneを設定しても、なぜかデフォルトのロサンゼルス時間のままでした…後に紹介する方法で手動でタイムゾーンを変更しましたが、どなたか解決方法知っている方いたら教えて下さい…！
-
-### Slack API
-[Slack App](https://api.slack.com/apps)を作成し、botを投稿したいワークスペースのチェンネルを選択し、Webhookを作成します。このあたりの手順も記事に書きたいと思いますが、一旦今は割愛します。
-
-上記で得たWebhook URLを環境変数に設定します。Functionsの環境変数の設定の仕方は以前[こちらの記事](https://dev.plus-class.jp/env-cloud-functions/)で紹介した通りです。
-
-```typescript:title=index.ts
-exports.firstReminder = functions.region('asia-northeast1').pubsub.schedule('0 10 * * *')
-.timeZone('Asia/Tokyo')
-.onRun(async (context) => {
-  if (!judgeHoliay()) {
-    const array = [
-      `今日も頑張りましょう☀️`,
-    ]
-    const data = {
-      text: array.join('\n')
-    }
-    const slackAPI = functions.config().slack_app.api
-    await axios.post(
-      slackAPI,
-      data,
-      {
-        headers: { 'Content-type': 'application/json' }
-      }
-    )
-  }
-
-  return null
-})
-```
-
-上記が実際のコードです。毎日10時になったら「今日も頑張りましょう☀️」とbotが挨拶してくれます(下画像)。4行目の`judgeHoliday()`は別で定義した関数で、土日祝日も関係なく毎日このfunctionは走るので、土日祝日の場合は、Webhookをたたかないようにしています。後は見ての通りです。環境変数のWebhook URLにaxiosでpostしています。
-
-![image](slack_app.png)
-
-[[info | 祝日の取得]]
-| 日本の祝日の取得は、`@holiday-jp/holiday_jp`を使っています。[npm等でインストール](https://www.npmjs.com/package/@holiday-jp/holiday_jp)できます。
-
-### Firebaseのコンソールで確認してみる
-上記を記述したfunctionをデプロイし、Firebaseのコンソールで確認してみると、トリガーに時計マークがついていました。そして、設定を開いてみると、「Cloud Schedulerで表示」という項目が。GCPにCloud Schedulerという機能があり、そちらで管理が可能です。編集をすれば、先ほどの`schedule`の引数と`timeZone`の引数がコンソール側で設定できます。先述の通り、`timeZone`がうまく設定されなかったので、この方法を使って手動で設定しています。
-
-
-![image](function.png)
-![image](gcp.png)
-
-## Next Dev's HINT...
-どうでしたでしょう。Cloud FunctionsとSlack APIを使えば、非常に簡単にbotを作ることができました。APIをたたくだけなので、もちろんSlack以外も簡単にできます。次回は…またまた未定です笑 (もはやNext Dev's HINTというタイトルやめようかな…コナンを真似したんだけど…)
+どうぞよろしくお願いいたします！
 
 ---
