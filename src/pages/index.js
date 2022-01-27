@@ -29,7 +29,7 @@ class BlogIndex extends React.Component {
     const siteTitle = data.site.siteMetadata.title;
     const postLatest = data.allMarkdownRemark.edges[0];
     const postsNew = data.allMarkdownRemark.edges.slice(1,6);
-    const postsMore = data.allMarkdownRemark.edges.slice(7);
+    const postsMore = data.allMarkdownRemark.edges.slice(6);
     const { location } = this.props;
 
     return (
