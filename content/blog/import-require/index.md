@@ -46,7 +46,7 @@ console.log(increment(9)) // 10
 // or
 
 import * as increment from './increment'
-console.log(increment(9)) // -> 10
+console.log(increment(9)) // 10
 ```
 
 ### 特徴
