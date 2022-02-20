@@ -1,6 +1,6 @@
 ---
 title: 'リセットCSS'
-date: '2022-02-22T12:00:00.000Z'
+date: '2022-02-20T12:00:00.000Z'
 category: [css]
 description: 'とりあえずこれくらいで良いだろうのメモ'
 author: 'goran'
