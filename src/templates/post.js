@@ -175,6 +175,13 @@ export const pageQuery = graphql`
             text
             site
           }
+          yapi {
+            name
+            slug
+            color
+            text
+            site
+          }
         }
       }
     }

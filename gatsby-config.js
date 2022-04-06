@@ -25,6 +25,13 @@ module.exports = {
         color: "#00FFFF",
         text: "エンジニアはじめました。",
         site: ""
+      },
+      yapi: {
+        name: "yapimaru_Eng",
+        slug: "yapi",
+        color: "#002E66",
+        text: "webサイトやアプリ、AIなどさまざまな技術に興味を持っています。",
+        site: "https://taketoyahiro.com"
       }
     },
     categories: [
@@ -97,6 +104,21 @@ module.exports = {
         name: "GCS",
         slug: "gcs",
         color: "#4285F4",
+      },
+      {
+        name: "Nuxt",
+        slug: "nuxt",
+        color: "#02DC81"
+      },
+      {
+        name: "Vuex",
+        slug: "vuex",
+        color: "#797979"
+      },
+      {
+        name: "AMP",
+        slug: "amp",
+        color: "#0379C4"
       }
     ],
   },

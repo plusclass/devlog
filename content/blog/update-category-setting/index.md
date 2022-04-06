@@ -8,7 +8,7 @@ hero: 'hero.jpg'
 ogp: 'ogp.jpg'
 ---
 
-こんにちは。GORAN です。今日は弊ブログについての話です。
+こんにちは。`GORAN` です。今日は弊ブログについての話です。
 
 [はじめの投稿にあるように](/devlog-has-launched/)弊ブログは[オープンになっております]((https://github.com/plusclass/devlog))。
 リポには[Update Progress](https://github.com/orgs/plusclass/projects/1)という`Project`を持たせていて、取り組んでいるアップデート事項を確認することができます。
@@ -18,7 +18,7 @@ ogp: 'ogp.jpg'
 ## 前提
 弊ブログは[@catnoseさん](https://twitter.com/catnose99?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)の[CatKnowsという個人ブログ](https://catnose99.com/)がオープンになっているのをいいことにヤドカリさせていただいたものになってます。
 
-本家を見ていただければわかりますが、**そもそも複数カテゴリを設定する仕様（思想）にはなっておりません**。タグの装飾やカテゴリごとのキュレーションを考えてもひとつ設定できれば必要十分という考えなのではと推察します（GORANもそう思う）が、弊チーム[@motoi](https://twitter.com/motoi_dev)から強い要望がありまして「複数タグ設定できるようにして」と命ぜられた次第でございます。笑
+本家を見ていただければわかりますが、**そもそも複数カテゴリを設定する仕様（思想）にはなっておりません**。タグの装飾やカテゴリごとのキュレーションを考えてもひとつ設定できれば必要十分という考えなのではと推察します（`GORAN`もそう思う）が、弊チーム[@motoi](https://twitter.com/motoi_dev)から強い要望がありまして「複数タグ設定できるようにして」と命ぜられた次第でございます。笑
 
 ![image](slack.png)
 （命を頂戴したのは*2021年6月12日*。あまりにも怠惰。）
