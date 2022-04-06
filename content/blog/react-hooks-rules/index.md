@@ -1,8 +1,8 @@
 ---
-title: "React hookのルール"
+title: "React hooksのルール"
 date: "2022-04-04T12:00:00.000Z"
 category: [react]
-description: "改めて"
+description: "ルールをちゃんと把握する"
 author: "motoi"
 hero: "hero.jpg"
 ogp: "ogp.jpg"
