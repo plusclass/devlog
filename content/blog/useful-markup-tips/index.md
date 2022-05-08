@@ -1,18 +1,18 @@
 ---
-title: 'ちょっと便利なCSS・HTML'
-date: '2022-05-10T12:00:00.000Z'
+title: 'ちょっと便利なヤツら'
+date: '2022-05-09T12:00:00.000Z'
 category: [css, html]
-description: 'マークアップに役立つタグ・プロパティ'
+description: 'マークアップに役立つタグとかプロパティとか'
 author: 'goran'
 hero: 'hero.jpg'
 ogp: 'ogp.jpg'
 ---
 
-こんにちは。`GORAN` です。今日は最近使ってるちょっと便利なヤツらをご紹介。
+こんにちは。`GORAN` です。今日は最近使ってるちょっと便利な CSS・HTML をご紹介。
 
 ## max-content
 
-[max-content](https://developer.mozilla.org/ja/docs/Web/CSS/max-content)は、オーバーフローが発生しても中身が折り返されずに内在的な最大幅のまま表示してくれるキーワード（値）。「`flex`で作った横並びのメニューをスマホサイズでは横スクロールさせたい」と思ったときに便利。
+[max-content](https://developer.mozilla.org/ja/docs/Web/CSS/max-content)は、オーバーフローが発生しても中身が折り返されずに内在的な最大幅のまま表示してくれるキーワード（値）。高さに対しても使用できる。「`flex`で作った横並びのメニューをスマホサイズでは横スクロールさせたい」と思ったときに便利。
 
 ```css:title=max-content
 .ovewflow-content {
@@ -22,7 +22,7 @@ ogp: 'ogp.jpg'
 
 ## clamp()
 
-[clamp()](https://developer.mozilla.org/ja/docs/Web/CSS/clamp)は変動する値の最小値と最大値を設定することができる CSS 関数記法。`clamp(MIN, VAL, MAX)`の形で使用する（これは`max()(MIN, min()(VAL, MAX))`と同義）。viewport の大きさに合わせてフォントサイズを設定するときに便利。
+[clamp()](https://developer.mozilla.org/ja/docs/Web/CSS/clamp)は変動する値を最小値と最大値でフタすることができる CSS 関数記法。`clamp(MIN, VAL, MAX)`の形で使用する。これは`max()(MIN, min()(VAL, MAX))`と同義。viewport の大きさに合わせてフォントサイズを設定するときに便利。
 
 ```css:title=clamp()
 p {
@@ -30,7 +30,8 @@ p {
 }
 ```
 
-基本`2.5vw`（viewport の横幅 2.5%）だけど、`1.8rem`未満にはならないし`2.8rem`より大きくもならない。
+[[simple | 意訳]]
+|基本`2.5vw`（viewport の横幅 2.5%）だけど、`1.8rem`未満にはならないし`2.8rem`より大きくもならない。
 
 ## Media Queries Level 4
 
