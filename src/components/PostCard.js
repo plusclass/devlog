@@ -37,6 +37,7 @@ const PostCardWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 2em;
     @media screen and (max-width: ${props => props.theme.responsive.small}) {
       flex-direction: column;
       padding: 0;
@@ -46,6 +47,7 @@ const PostCardWrapper = styled.div`
       box-shadow: none;
       position: relative;
       border-radius: 8px;
+      flex-shrink: 0;
       &::before {
         content: "";
         width: 80px;
@@ -103,14 +105,20 @@ const PostCardWrapper = styled.div`
     }
   }
   &.more {
+    &:last-child {
+      margin-bottom: 2em;
+    }
     .post-card-link {
       border: 8px solid #000;
       background: transparent;
       border: 0;
       border-bottom: 2px solid ${props => props.theme.colors.bgLight};
       border-radius: 0;
-      padding: 0 0.4em 0 0;
-      margin: 1.2em auto;
+      padding: 1em;
+      margin: 0;
+      @media screen and (max-width: ${props => props.theme.responsive.small}) {
+        padding: 1em 0;
+      }
       &:hover {
         box-shadow: none;
       }
@@ -131,7 +139,7 @@ const PostCardWrapper = styled.div`
         display: flex;
         justify-content: space-between;
         padding: 0;
-        margin: 0 0 0 24px;
+        margin: 0;
         @media screen and (max-width: ${props => props.theme.responsive.small}) {
           flex-direction: column;
         }
