@@ -126,7 +126,7 @@ ogp: 'ogp.jpg'
 
 のように記述するしかなかったので、一部しか使わなくても一括の設定しかできなかったのですが、
 
-```css:title=transitionとwill-changeのBEFORE
+```css:title=transitionとwill-changeのAFTER
 .target-transition {
   transition: translate 0.4s, rotate 0.2s;
 }
